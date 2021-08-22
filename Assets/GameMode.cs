@@ -6,11 +6,12 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField] private float earthRadius = 20;
     [SerializeField] private Transform disasterPF;
+    [SerializeField] private Transform earthParent;
 
     private void CreateDisaster()
     {
         Vector3 pos = GetRandomDisasterSpawnPos();
-        Instantiate(disasterPF, pos, Quaternion.identity);
+        Instantiate(disasterPF, pos, Quaternion.identity, earthParent);
     }
 
     private Vector3 GetRandomDisasterSpawnPos()

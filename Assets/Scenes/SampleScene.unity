@@ -296,6 +296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 131460054}
+  - component: {fileID: 131460055}
   m_Layer: 0
   m_Name: GameMode
   m_TagString: Untagged
@@ -317,6 +318,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &131460055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131460053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098c75298d81ea04e937cddcbcb56d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  earthRadius: 20
+  disasterPF: {fileID: 795836936347834663, guid: a36c2f78e58073a46b7477c43b302910, type: 3}
+  earthParent: {fileID: 2117829142}
 --- !u!1 &799889626
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,3 +634,8 @@ PrefabInstance:
       objectReference: {fileID: 799889627}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
+--- !u!4 &2117829142 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 431172, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
+  m_PrefabInstance: {fileID: 1936027409}
+  m_PrefabAsset: {fileID: 0}
