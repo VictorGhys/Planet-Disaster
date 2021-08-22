@@ -27,7 +27,7 @@ public class cameraMovement : MonoBehaviour
             float y = Input.mousePosition.y;
             float moveX = oldPos.x - x;
             float moveY = oldPos.y - y;
-            transform.RotateAround(rotateAroundPoint, transform.up, moveX * rotateSpeed);
+            transform.RotateAround(rotateAroundPoint, transform.up, -moveX * rotateSpeed);
             transform.RotateAround(rotateAroundPoint, transform.right, moveY * rotateSpeed);
             oldPos.x = Input.mousePosition.x;
             oldPos.y = Input.mousePosition.y;

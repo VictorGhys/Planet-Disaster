@@ -436,6 +436,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -508,6 +509,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0517959ea6e72043aa17149ae74d519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateAroundPoint: {x: 0, y: 0, z: 0}
+  rotateSpeed: 0.5
+  minCameraDistance: 30
+  maxCameraDistance: 100
 --- !u!850595691 &1818956864
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -620,6 +637,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2353574, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b5031a6a6df4761419620225a425cb06, type: 2}
     - target: {fileID: 3361438, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
       propertyPath: m_Mesh
       value: 
