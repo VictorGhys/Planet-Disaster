@@ -18,16 +18,19 @@ public class GameMode : MonoBehaviour
 
     private Vector3 GetRandomDisasterSpawnPos()
     {
-        Vector3 rand = Random.onUnitSphere;
-        Vector3 randPos = rand * earthRadius;
+        Vector3 rand;
+        Vector3 randPos;
         RaycastHit hit;
         int n = 0;
         while (n < 100)
         {
+            rand = Random.onUnitSphere;
+            randPos = rand * earthRadius;
             if (Physics.Raycast(randPos + rand, -rand, out hit, earthRadius))
             {
                 Vector2 texCoord = hit.textureCoord;
-                if (landWaterTex.GetPixelBilinear(texCoord.x, texCoord.y).grayscale < 0.5f)
+                float sample = landWaterTex.GetPixelBilinear(texCoord.x, texCoord.y).a;
+                if (sample < 0.5f)
                 {
                     return randPos;
                 }
@@ -35,7 +38,7 @@ public class GameMode : MonoBehaviour
             n++;
         }
         Debug.Log("failed!");
-        return randPos;
+        return Vector3.back;
     }
 
     // Start is called before the first frame update

@@ -649,14 +649,14 @@ PrefabInstance:
     - target: {fileID: 6439326, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 90700709}
     - target: {fileID: 6439326, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
       propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6439326, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11401934, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
       propertyPath: Sun
@@ -683,7 +683,7 @@ SphereCollider:
   m_GameObject: {fileID: 2117829141}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 20.000002
   m_Center: {x: 0, y: 0, z: 0}
