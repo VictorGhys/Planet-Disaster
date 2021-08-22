@@ -8,6 +8,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] private Transform disasterPF;
     [SerializeField] private Transform earthParent;
     [SerializeField] private Texture2D landWaterTex;
+    private bool do_once = true;
 
     private void CreateDisaster()
     {
@@ -23,7 +24,7 @@ public class GameMode : MonoBehaviour
         int n = 0;
         while (n < 100)
         {
-            if (Physics.Raycast(randPos, -rand, out hit, earthRadius))
+            if (Physics.Raycast(randPos + rand, -rand, out hit, earthRadius))
             {
                 Vector2 texCoord = hit.textureCoord;
                 if (landWaterTex.GetPixelBilinear(texCoord.x, texCoord.y).grayscale < 0.5f)
@@ -40,11 +41,15 @@ public class GameMode : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        CreateDisaster();
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (do_once)
+        {
+            do_once = false;
+            CreateDisaster();
+        }
     }
 }

@@ -104,6 +104,10 @@ namespace DigitalRuby.Earth
             {
                 dirty = true;
             }
+            if (GetComponent<MeshCollider>().sharedMesh == null)
+            {
+                dirty = true;
+            }
         }
 
         private void CreateUVSphere()
@@ -125,6 +129,7 @@ namespace DigitalRuby.Earth
             #endregion Setup
 
             #region Vertices
+
             Vector3[] vertices = new Vector3[(longitudeCount + 1) * latitudeCount + 2];
             float _pi = Mathf.PI;
             float _2pi = _pi * 2f;
@@ -146,24 +151,30 @@ namespace DigitalRuby.Earth
                 }
             }
             vertices[vertices.Length - 1] = Vector3.up * -Radius;
-            #endregion
 
-            #region Normales		
+            #endregion Vertices
+
+            #region Normales
+
             Vector3[] normales = new Vector3[vertices.Length];
             for (int n = 0; n < vertices.Length; n++)
                 normales[n] = vertices[n].normalized;
-            #endregion
+
+            #endregion Normales
 
             #region UVs
+
             Vector2[] uvs = new Vector2[vertices.Length];
             uvs[0] = Vector2.up;
             uvs[uvs.Length - 1] = Vector2.zero;
             for (int lat = 0; lat < latitudeCount; lat++)
                 for (int lon = 0; lon <= longitudeCount; lon++)
                     uvs[lon + lat * (longitudeCount + 1) + 1] = new Vector2((float)lon / longitudeCount, 1f - (float)(lat + 1) / (latitudeCount + 1));
-            #endregion
+
+            #endregion UVs
 
             #region Triangles
+
             int nbFaces = vertices.Length;
             int nbTriangles = nbFaces * 2;
             int nbIndexes = nbTriangles * 3;
@@ -203,7 +214,8 @@ namespace DigitalRuby.Earth
                 triangles[i++] = vertices.Length - (lon + 2) - 1;
                 triangles[i++] = vertices.Length - (lon + 1) - 1;
             }
-            #endregion
+
+            #endregion Triangles
 
             #region Finish Up
 
@@ -260,6 +272,10 @@ namespace DigitalRuby.Earth
                 mesh = filter.sharedMesh = new Mesh();
                 mesh.name = gameObject.name + "_Mesh";
             }
+
+            MeshCollider collider = GetComponent<MeshCollider>();
+            collider.sharedMesh = mesh;
+
             mesh.Clear();
 
             Dictionary<MiddlePointCacheKey, int> middlePointIndexCache = new Dictionary<MiddlePointCacheKey, int>();
@@ -296,7 +312,7 @@ namespace DigitalRuby.Earth
             faces.Add(new TriangleIndices(0, 7, 10));
             faces.Add(new TriangleIndices(0, 10, 11));
 
-            // 5 adjacent faces 
+            // 5 adjacent faces
             faces.Add(new TriangleIndices(1, 5, 9));
             faces.Add(new TriangleIndices(5, 11, 4));
             faces.Add(new TriangleIndices(11, 10, 2));
@@ -310,7 +326,7 @@ namespace DigitalRuby.Earth
             faces.Add(new TriangleIndices(3, 6, 8));
             faces.Add(new TriangleIndices(3, 8, 9));
 
-            // 5 adjacent faces 
+            // 5 adjacent faces
             faces.Add(new TriangleIndices(4, 9, 5));
             faces.Add(new TriangleIndices(2, 4, 11));
             faces.Add(new TriangleIndices(6, 2, 10));
@@ -400,7 +416,6 @@ namespace DigitalRuby.Earth
 
         protected virtual void Start()
         {
-
 #if UNITY_EDITOR
 
             if (Application.isPlaying)
@@ -410,12 +425,10 @@ namespace DigitalRuby.Earth
             }
 
 #endif
-
         }
 
         protected virtual void Update()
         {
-
 #if UNITY_EDITOR
 
             CheckDirty();
@@ -434,7 +447,6 @@ namespace DigitalRuby.Earth
             }
 
 #endif
-
         }
     }
 }

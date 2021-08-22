@@ -333,6 +333,7 @@ MonoBehaviour:
   earthRadius: 20
   disasterPF: {fileID: 795836936347834663, guid: a36c2f78e58073a46b7477c43b302910, type: 3}
   earthParent: {fileID: 2117829142}
+  landWaterTex: {fileID: 2800000, guid: 5ca5bf05f3cb3b046be353275c0ef45c, type: 3}
 --- !u!1 &799889626
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,14 +650,40 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6439326, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439326, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11401934, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
       propertyPath: Sun
       value: 
       objectReference: {fileID: 799889627}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
+--- !u!1 &2117829141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 163060, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
+  m_PrefabInstance: {fileID: 1936027409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2117829142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 431172, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
   m_PrefabInstance: {fileID: 1936027409}
   m_PrefabAsset: {fileID: 0}
+--- !u!135 &2117829147
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117829141}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20.000002
+  m_Center: {x: 0, y: 0, z: 0}
