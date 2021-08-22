@@ -7,6 +7,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] private float earthRadius = 20;
     [SerializeField] private Transform disasterPF;
     [SerializeField] private Transform earthParent;
+    [SerializeField] private Texture2D landWaterTex;
 
     private void CreateDisaster()
     {
@@ -18,6 +19,21 @@ public class GameMode : MonoBehaviour
     {
         Vector3 rand = Random.onUnitSphere;
         Vector3 randPos = rand * earthRadius;
+        RaycastHit hit;
+        int n = 0;
+        while (n < 100)
+        {
+            if (Physics.Raycast(randPos, -rand, out hit, earthRadius))
+            {
+                Vector2 texCoord = hit.textureCoord;
+                if (landWaterTex.GetPixelBilinear(texCoord.x, texCoord.y).grayscale < 0.5f)
+                {
+                    return randPos;
+                }
+            }
+            n++;
+        }
+        Debug.Log("failed!");
         return randPos;
     }
 
