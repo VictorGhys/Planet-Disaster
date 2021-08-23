@@ -108,3 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ab747f0f55be948a9c14402bded4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startSize: 1
+  burstSize: 10
+  sizeGrowthSpeed: 0.1
+  floodMat: {fileID: 2100000, guid: 6a4e66d3679876945aa80f3f820740ff, type: 2}
+  fireMat: {fileID: 2100000, guid: 4f4c7d5bd2ad421419e3613a077e7960, type: 2}
+  earthquakeMat: {fileID: 2100000, guid: a642fcc326b19ec40a8dd5d9a179799f, type: 2}
+  tornadoMat: {fileID: 2100000, guid: 234f6648fa07f914184527246e68f47c, type: 2}
+  winterstormMat: {fileID: 2100000, guid: ce55a79e7c24cd64c8ef31f2356cc5bf, type: 2}

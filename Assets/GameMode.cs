@@ -91,6 +91,8 @@ public class GameMode : MonoBehaviour
                     {
                         //match
                         Debug.Log("match " + selectedDisaster.GetDisasterType() + " with " + hitDisaster.GetDisasterType());
+                        Match(selectedDisaster, hitDisaster);
+                        selectedDisaster = null;
                     }
                     else
                     {
@@ -103,6 +105,41 @@ public class GameMode : MonoBehaviour
                 {
                     //unselect
                     selectedDisaster = null;
+                }
+            }
+        }
+    }
+
+    private void Match(Disaster disaster1, Disaster disaster2)
+    {
+        // can't match a disaster with itself
+        if (disaster1 == disaster2)
+        {
+            return;
+        }
+        Disaster.DisasterType type1 = disaster1.GetDisasterType();
+        Disaster.DisasterType type2 = disaster2.GetDisasterType();
+        if (disasterMatches.ContainsKey(type1))
+        {
+            List<Disaster.DisasterType> matches = disasterMatches[type1];
+            if (matches.Contains(type2))
+            {
+                //succesfull match
+                disaster1.transform.position = disaster2.transform.position;
+                Destroy(disaster2.gameObject);
+            }
+            else
+            {
+                // check for worsener
+                List<Disaster.DisasterType> worseners = disasterWorseners[type1];
+                if (worseners.Contains(type2))
+                {
+                    //succesfull worsen
+                    disaster2.size *= 2;
+                }
+                else
+                {
+                    //unsuccesfull match
                 }
             }
         }
