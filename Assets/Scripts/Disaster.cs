@@ -28,6 +28,7 @@ public class Disaster : MonoBehaviour
     [SerializeField] private float populationDrainRate;
     private DisasterType disasterType;
     private Transform model;
+    private Vector3 modelSize;
 
     public enum DisasterType
     {
@@ -60,7 +61,8 @@ public class Disaster : MonoBehaviour
 
             case DisasterType.Fire:
                 renderer.material = fireMat;
-
+                modelSize = fireModel.localScale;
+                model = Instantiate(fireModel, transform.position, transform.rotation, transform.parent);
                 break;
 
             case DisasterType.Earthquake:
@@ -70,6 +72,7 @@ public class Disaster : MonoBehaviour
 
             case DisasterType.Tornado:
                 renderer.material = tornadoMat;
+                modelSize = tornadoModel.localScale;
                 model = Instantiate(tornadoModel, transform.position, transform.rotation, transform.parent);
                 break;
 
@@ -92,7 +95,7 @@ public class Disaster : MonoBehaviour
             transform.localScale = new Vector3(size, transform.localScale.y, size);
             if (model)
             {
-                model.transform.localScale = new Vector3(size, size, size);
+                model.transform.localScale = modelSize * size;
             }
         }
         //drain population
