@@ -8,7 +8,7 @@ public class Disaster : MonoBehaviour
 {
     private DisasterType disasterType;
 
-    private enum DisasterType
+    public enum DisasterType
     {
         Flood, Fire, Earthquake, Tornado, Winterstorm
     }
@@ -18,6 +18,11 @@ public class Disaster : MonoBehaviour
         Array values = Enum.GetValues(typeof(DisasterType));
         DisasterType randomType = (DisasterType)values.GetValue(Random.Range(0, values.Length));
         return randomType;
+    }
+
+    public DisasterType GetDisasterType()
+    {
+        return disasterType;
     }
 
     // Start is called before the first frame update

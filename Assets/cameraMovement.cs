@@ -21,7 +21,7 @@ public class cameraMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire2"))
         {
             float x = Input.mousePosition.x;
             float y = Input.mousePosition.y;

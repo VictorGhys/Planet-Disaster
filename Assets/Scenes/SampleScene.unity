@@ -334,6 +334,7 @@ MonoBehaviour:
   disasterPF: {fileID: 795836936347834663, guid: a36c2f78e58073a46b7477c43b302910, type: 3}
   earthParent: {fileID: 2117829142}
   landWaterTex: {fileID: 2800000, guid: 5ca5bf05f3cb3b046be353275c0ef45c, type: 3}
+  camera: {fileID: 963194227}
 --- !u!1 &799889626
 GameObject:
   m_ObjectHideFlags: 0
