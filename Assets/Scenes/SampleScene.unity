@@ -426,6 +426,7 @@ MonoBehaviour:
   camera: {fileID: 963194227}
   populationSlider: {fileID: 46296737}
   populationRegainRate: 0.002
+  disasterSpawnInterval: 5
 --- !u!1 &378212034
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +806,7 @@ MonoBehaviour:
   rotateSpeed: 0.4
   minCameraDistance: 25
   maxCameraDistance: 100
-  zoomSpeed: 1
+  zoomSpeed: 2
 --- !u!124 &963194230
 Behaviour:
   m_ObjectHideFlags: 0

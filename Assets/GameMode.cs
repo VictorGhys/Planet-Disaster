@@ -14,10 +14,12 @@ public class GameMode : MonoBehaviour
     [SerializeField] private Camera camera;
     [SerializeField] private Slider populationSlider;
     [SerializeField] private float populationRegainRate;
+    [SerializeField] private float disasterSpawnInterval;
 
-    private bool do_once = true;
+    private bool isSpawningDisasters = true;
     private Disaster selectedDisaster = null;
     private bool gameOver = false;
+    private float spawnTime;
 
     private Dictionary<Disaster.DisasterType, List<Disaster.DisasterType>> disasterMatches =
         new Dictionary<Disaster.DisasterType, List<Disaster.DisasterType>> {
@@ -41,7 +43,8 @@ public class GameMode : MonoBehaviour
     {
         Vector3 pos = GetRandomDisasterSpawnPos();
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, (pos / earthRadius));
-        Transform disaster = Instantiate(disasterPF, pos, rot, earthParent);
+        Quaternion quarterTurn = Quaternion.Euler(90, 0, 0);
+        Transform disaster = Instantiate(disasterPF, pos, rot * quarterTurn, earthParent);
         disaster.GetComponent<Disaster>().slider = populationSlider;
     }
 
@@ -78,11 +81,15 @@ public class GameMode : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (do_once)
+        //spawning
+        if (isSpawningDisasters)
         {
-            do_once = false;
-            CreateDisaster();
-            CreateDisaster();
+            spawnTime += Time.deltaTime;
+            if (spawnTime > disasterSpawnInterval)
+            {
+                spawnTime = 0;
+                CreateDisaster();
+            }
         }
         //regain population
         if (populationSlider.value < populationSlider.maxValue)
@@ -109,6 +116,7 @@ public class GameMode : MonoBehaviour
                         Debug.Log("match " + selectedDisaster.GetDisasterType() + " with " + hitDisaster.GetDisasterType());
                         Match(selectedDisaster, hitDisaster);
                         selectedDisaster = null;
+                        GetComponent<DialogueTrigger>().TriggerDialogue();
                     }
                     else
                     {
