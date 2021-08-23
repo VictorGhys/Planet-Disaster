@@ -43,8 +43,8 @@ public class GameMode : MonoBehaviour
     {
         Vector3 pos = GetRandomDisasterSpawnPos();
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, (pos / earthRadius));
-        Quaternion quarterTurn = Quaternion.Euler(90, 0, 0);
-        Transform disaster = Instantiate(disasterPF, pos, rot * quarterTurn, earthParent);
+        //Quaternion quarterTurn = Quaternion.Euler(90, 0, 0);
+        Transform disaster = Instantiate(disasterPF, pos, rot, earthParent);
         disaster.GetComponent<Disaster>().slider = populationSlider;
     }
 

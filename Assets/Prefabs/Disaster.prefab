@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 795836936347834663}
   - component: {fileID: 3505113707948563959}
   - component: {fileID: 7201530995320876016}
-  - component: {fileID: 8823512784035499900}
+  - component: {fileID: -8592006104044331150}
   - component: {fileID: 9001080371985501135}
   m_Layer: 0
   m_Name: Disaster
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2229735225237507677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2229735225237507677}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &7201530995320876016
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3f755cb1c18c1624eb5d34a5969ee351, type: 2}
+  - {fileID: 2100000, guid: 3e1ef6b5cb84b8b41b8ae1571f657f6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,8 +83,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8823512784035499900
-SphereCollider:
+--- !u!136 &-8592006104044331150
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,9 +93,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &9001080371985501135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,4 +117,9 @@ MonoBehaviour:
   earthquakeMat: {fileID: 2100000, guid: e7726c7ec7ea74d4dafef45d2a7a7820, type: 2}
   tornadoMat: {fileID: 2100000, guid: ce21b5c3cd604b24cbe3aba9627d9d1a, type: 2}
   winterstormMat: {fileID: 2100000, guid: 2945f3c9c0b78a94c956e33e99b862be, type: 2}
+  floodModel: {fileID: 0}
+  fireModel: {fileID: 0}
+  earthquakeModel: {fileID: 0}
+  tornadoModel: {fileID: 3019425616423967649, guid: b1858383fbd475a48b372ae999536653, type: 3}
+  winterstormModel: {fileID: 0}
   populationDrainRate: 0.005

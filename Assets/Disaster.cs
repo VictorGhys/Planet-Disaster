@@ -19,8 +19,15 @@ public class Disaster : MonoBehaviour
     [SerializeField] private Material earthquakeMat;
     [SerializeField] private Material tornadoMat;
     [SerializeField] private Material winterstormMat;
+
+    [SerializeField] private Transform floodModel;
+    [SerializeField] private Transform fireModel;
+    [SerializeField] private Transform earthquakeModel;
+    [SerializeField] private Transform tornadoModel;
+    [SerializeField] private Transform winterstormModel;
     [SerializeField] private float populationDrainRate;
     private DisasterType disasterType;
+    private Transform model;
 
     public enum DisasterType
     {
@@ -63,7 +70,7 @@ public class Disaster : MonoBehaviour
 
             case DisasterType.Tornado:
                 renderer.material = tornadoMat;
-
+                model = Instantiate(tornadoModel, transform.position, transform.rotation, transform.parent);
                 break;
 
             case DisasterType.Winterstorm:
@@ -82,7 +89,11 @@ public class Disaster : MonoBehaviour
         if (isGrowing)
         {
             size += sizeGrowthSpeed * Time.deltaTime;
-            transform.localScale = new Vector3(size, size, size);
+            transform.localScale = new Vector3(size, transform.localScale.y, size);
+            if (model)
+            {
+                model.transform.localScale = new Vector3(size, size, size);
+            }
         }
         //drain population
         slider.value -= populationDrainRate * size * Time.deltaTime;

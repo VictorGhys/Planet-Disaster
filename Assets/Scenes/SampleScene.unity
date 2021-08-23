@@ -386,6 +386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 131460054}
   - component: {fileID: 131460055}
+  - component: {fileID: 131460056}
   m_Layer: 0
   m_Name: GameMode
   m_TagString: Untagged
@@ -426,7 +427,25 @@ MonoBehaviour:
   camera: {fileID: 963194227}
   populationSlider: {fileID: 46296737}
   populationRegainRate: 0.002
-  disasterSpawnInterval: 5
+  disasterSpawnInterval: 2
+--- !u!114 &131460056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131460053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Omnipresent Being
+    sentences:
+    - Wow good job!
+    - nice work
+    - 
 --- !u!1 &378212034
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +521,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378212034}
   m_CullTransparentMesh: 0
+--- !u!1 &585661789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 585661791}
+  - component: {fileID: 585661790}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &585661790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585661789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4aa5c1bab3575d4f90bbedc85daec72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &585661791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585661789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.748842, y: -13.782232, z: 43.433014}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789714773
 GameObject:
   m_ObjectHideFlags: 0
