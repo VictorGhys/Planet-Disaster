@@ -116,3 +116,4 @@ MonoBehaviour:
   earthquakeMat: {fileID: 2100000, guid: e7726c7ec7ea74d4dafef45d2a7a7820, type: 2}
   tornadoMat: {fileID: 2100000, guid: ce21b5c3cd604b24cbe3aba9627d9d1a, type: 2}
   winterstormMat: {fileID: 2100000, guid: 2945f3c9c0b78a94c956e33e99b862be, type: 2}
+  populationDrainRate: 0.005

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
+using UnityEngine.UI;
 using static Disaster.DisasterType;
 
 public class GameMode : MonoBehaviour
@@ -11,8 +12,12 @@ public class GameMode : MonoBehaviour
     [SerializeField] private Transform earthParent;
     [SerializeField] private Texture2D landWaterTex;
     [SerializeField] private Camera camera;
+    [SerializeField] private Slider populationSlider;
+    [SerializeField] private float populationRegainRate;
+
     private bool do_once = true;
     private Disaster selectedDisaster = null;
+    private bool gameOver = false;
 
     private Dictionary<Disaster.DisasterType, List<Disaster.DisasterType>> disasterMatches =
         new Dictionary<Disaster.DisasterType, List<Disaster.DisasterType>> {
@@ -36,7 +41,8 @@ public class GameMode : MonoBehaviour
     {
         Vector3 pos = GetRandomDisasterSpawnPos();
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, (pos / earthRadius));
-        Instantiate(disasterPF, pos, rot, earthParent);
+        Transform disaster = Instantiate(disasterPF, pos, rot, earthParent);
+        disaster.GetComponent<Disaster>().slider = populationSlider;
     }
 
     private Vector3 GetRandomDisasterSpawnPos()
@@ -77,6 +83,15 @@ public class GameMode : MonoBehaviour
             do_once = false;
             CreateDisaster();
             CreateDisaster();
+        }
+        //regain population
+        if (populationSlider.value < populationSlider.maxValue)
+        {
+            if (populationSlider.value <= 0)
+            {
+                gameOver = true;
+            }
+            populationSlider.value += populationRegainRate * populationSlider.maxValue * Time.deltaTime;
         }
         //click disasters to select them if an other is selected match them
         if (Input.GetMouseButtonDown(0))

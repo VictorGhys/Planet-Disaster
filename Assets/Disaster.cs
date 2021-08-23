@@ -2,21 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Disaster : MonoBehaviour
 {
-    private DisasterType disasterType;
     public float size { get; set; }
+    public bool isGrowing { get; set; } = true;
+    public Slider slider { get; set; }
+
     [SerializeField] private float startSize = 1;
     [SerializeField] private float burstSize = 10;
     [SerializeField] private float sizeGrowthSpeed = 10;
-    public bool isGrowing { get; set; } = true;
     [SerializeField] private Material floodMat;
     [SerializeField] private Material fireMat;
     [SerializeField] private Material earthquakeMat;
     [SerializeField] private Material tornadoMat;
     [SerializeField] private Material winterstormMat;
+    [SerializeField] private float populationDrainRate;
+    private DisasterType disasterType;
 
     public enum DisasterType
     {
@@ -80,6 +84,8 @@ public class Disaster : MonoBehaviour
             size += sizeGrowthSpeed * Time.deltaTime;
             transform.localScale = new Vector3(size, size, size);
         }
+        //drain population
+        slider.value -= populationDrainRate * size * Time.deltaTime;
     }
 
     public void ResetSize()
