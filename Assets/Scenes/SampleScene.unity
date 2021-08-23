@@ -525,8 +525,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateAroundPoint: {x: 0, y: 0, z: 0}
   rotateSpeed: 0.5
-  minCameraDistance: 30
+  minCameraDistance: 25
   maxCameraDistance: 100
+  zoomSpeed: 1
 --- !u!850595691 &1818956864
 LightingSettings:
   m_ObjectHideFlags: 0

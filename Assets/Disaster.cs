@@ -81,4 +81,9 @@ public class Disaster : MonoBehaviour
             transform.localScale = new Vector3(size, size, size);
         }
     }
+
+    public void ResetSize()
+    {
+        size = startSize;
+    }
 }

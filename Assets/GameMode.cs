@@ -35,7 +35,8 @@ public class GameMode : MonoBehaviour
     private void CreateDisaster()
     {
         Vector3 pos = GetRandomDisasterSpawnPos();
-        Instantiate(disasterPF, pos, Quaternion.identity, earthParent);
+        Quaternion rot = Quaternion.FromToRotation(Vector3.up, (pos / earthRadius));
+        Instantiate(disasterPF, pos, rot, earthParent);
     }
 
     private Vector3 GetRandomDisasterSpawnPos()
@@ -126,6 +127,8 @@ public class GameMode : MonoBehaviour
             {
                 //succesfull match
                 disaster1.transform.position = disaster2.transform.position;
+                disaster1.transform.rotation = disaster2.transform.rotation;
+                disaster1.ResetSize();
                 Destroy(disaster2.gameObject);
             }
             else
