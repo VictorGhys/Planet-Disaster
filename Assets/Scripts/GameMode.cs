@@ -149,10 +149,9 @@ public class GameMode : MonoBehaviour
             if (matches.Contains(type2))
             {
                 //succesfull match
-                disaster1.transform.position = disaster2.transform.position;
-                disaster1.transform.rotation = disaster2.transform.rotation;
+                disaster1.Relocate(disaster2.transform);
                 disaster1.ResetSize();
-                Destroy(disaster2.gameObject);
+                disaster2.Destroy();
             }
             else
             {

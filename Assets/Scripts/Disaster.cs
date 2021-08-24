@@ -29,6 +29,7 @@ public class Disaster : MonoBehaviour
     private DisasterType disasterType;
     private Transform model;
     private Vector3 modelSize;
+    private float iconYScale;
 
     public enum DisasterType
     {
@@ -51,6 +52,7 @@ public class Disaster : MonoBehaviour
     private void Start()
     {
         size = startSize;
+        iconYScale = transform.localScale.y;
         disasterType = GetRandomDisasterType();
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         switch (disasterType)
@@ -78,7 +80,8 @@ public class Disaster : MonoBehaviour
 
             case DisasterType.Winterstorm:
                 renderer.material = winterstormMat;
-
+                modelSize = winterstormModel.localScale;
+                model = Instantiate(winterstormModel, transform.position, transform.rotation, transform.parent);
                 break;
 
             default:
@@ -91,11 +94,19 @@ public class Disaster : MonoBehaviour
     {
         if (isGrowing)
         {
-            size += sizeGrowthSpeed * Time.deltaTime;
-            transform.localScale = new Vector3(size, transform.localScale.y, size);
-            if (model)
+            if (size < burstSize)
             {
-                model.transform.localScale = modelSize * size;
+                size += sizeGrowthSpeed * Time.deltaTime;
+                //transform.localScale = new Vector3(size, transform.localScale.y, size);
+                transform.localScale = new Vector3(size, iconYScale * size / 2, size);
+                if (model)
+                {
+                    model.transform.localScale = modelSize * size;
+                }
+            }
+            else
+            {
+                //burst
             }
         }
         //drain population
@@ -105,5 +116,25 @@ public class Disaster : MonoBehaviour
     public void ResetSize()
     {
         size = startSize;
+    }
+
+    public void Relocate(Transform toTransform)
+    {
+        transform.position = toTransform.position;
+        transform.rotation = toTransform.rotation;
+        if (model)
+        {
+            model.transform.position = toTransform.position;
+            model.rotation = toTransform.rotation;
+        }
+    }
+
+    public void Destroy()
+    {
+        if (model)
+        {
+            Destroy(model.gameObject);
+        }
+        Destroy(transform.gameObject);
     }
 }

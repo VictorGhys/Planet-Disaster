@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSize: 1
-  burstSize: 10
+  burstSize: 6
   sizeGrowthSpeed: 0.1
   floodMat: {fileID: 2100000, guid: 94b9d7005c6d13b40982f656f01b4e4f, type: 2}
   fireMat: {fileID: 2100000, guid: 3e1ef6b5cb84b8b41b8ae1571f657f6a, type: 2}
@@ -121,5 +121,5 @@ MonoBehaviour:
   fireModel: {fileID: 2158165671197344451, guid: f7c08e469f362d3429dfcc9fe56614b7, type: 3}
   earthquakeModel: {fileID: 0}
   tornadoModel: {fileID: 3019425616423967649, guid: b1858383fbd475a48b372ae999536653, type: 3}
-  winterstormModel: {fileID: 0}
-  populationDrainRate: 0.005
+  winterstormModel: {fileID: 6370895378893424725, guid: 1562780e9e9fde34a9cfd17727cee52e, type: 3}
+  populationDrainRate: 0.001
