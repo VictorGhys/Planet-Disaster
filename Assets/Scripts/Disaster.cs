@@ -14,6 +14,8 @@ public class Disaster : MonoBehaviour
     [SerializeField] private float startSize = 1;
     [SerializeField] private float burstSize = 10;
     [SerializeField] private float sizeGrowthSpeed = 10;
+    [SerializeField] private float earthquakeShakeSpeed = 1;
+    [SerializeField] private float earthquakeShakeStrength = 1;
     [SerializeField] private Material floodMat;
     [SerializeField] private Material fireMat;
     [SerializeField] private Material earthquakeMat;
@@ -59,6 +61,8 @@ public class Disaster : MonoBehaviour
         {
             case DisasterType.Flood:
                 renderer.material = floodMat;
+                modelSize = floodModel.localScale;
+                model = Instantiate(floodModel, transform.position, transform.rotation, transform.parent);
                 break;
 
             case DisasterType.Fire:
@@ -69,7 +73,8 @@ public class Disaster : MonoBehaviour
 
             case DisasterType.Earthquake:
                 renderer.material = earthquakeMat;
-
+                modelSize = earthquakeModel.localScale;
+                model = Instantiate(earthquakeModel, transform.position, transform.rotation, transform.parent);
                 break;
 
             case DisasterType.Tornado:
@@ -111,6 +116,16 @@ public class Disaster : MonoBehaviour
         }
         //drain population
         slider.value -= populationDrainRate * size * Time.deltaTime;
+        //Earthquake shake
+        if (disasterType == DisasterType.Earthquake)
+        {
+            float sin = Mathf.Sin(Time.time * earthquakeShakeSpeed) * earthquakeShakeStrength;
+            //model.transform.position += model.transform.right * sin;
+            //transform.position += transform.right * sin;
+            model.GetChild(0).transform.rotation = transform.rotation;
+            model.GetChild(0).transform.Rotate(transform.up, sin);
+            //transform.Rotate(transform.up, sin);
+        }
     }
 
     public void ResetSize()
