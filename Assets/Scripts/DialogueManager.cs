@@ -9,7 +9,7 @@ public class DialogueManager : Singleton<DialogueManager>
 {
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text dialogueText;
-
+    [SerializeField] private Animator animator;
     private Queue<string> sentences;
 
     public void Start()
@@ -20,18 +20,18 @@ public class DialogueManager : Singleton<DialogueManager>
     // Start is called before the first frame update
     public void StartDialogue(Dialogue dialogue)
     {
-        Debug.Log("start conversation");
+        animator.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
         sentences.Clear();
-        foreach (var sentence in sentences)
+        foreach (var sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
 
-        //update ui
+        DisplayNextSentence();
     }
 
-    private void DisplayNextSentence()
+    public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
         {
@@ -40,12 +40,24 @@ public class DialogueManager : Singleton<DialogueManager>
         }
 
         string sentence = sentences.Dequeue();
-        Debug.Log(sentence);
-        dialogueText.text = sentence;
+        //Debug.Log(sentence);
+        //dialogueText.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    private IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = "";
+        foreach (var letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return null;
+        }
     }
 
     private void EndDialogue()
     {
-        Debug.Log("end of conversation");
+        animator.SetBool("IsOpen", false);
     }
 }
