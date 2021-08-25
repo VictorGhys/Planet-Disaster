@@ -17,6 +17,9 @@ public class GameMode : MonoBehaviour
     [SerializeField] private float disasterSpawnInterval;
     [SerializeField] private DialogueTrigger startDialogue;
     [SerializeField] private DialogueTrigger worsenDialogue;
+    [SerializeField] private AudioSource matchPositiveSFX;
+    [SerializeField] private AudioSource matchWrongSFX;
+    [SerializeField] private AudioSource matchErrorSFX;
 
     private bool isSpawningDisasters = true;
     private Disaster selectedDisaster = null;
@@ -162,6 +165,7 @@ public class GameMode : MonoBehaviour
                 //disaster1.ResetSize();
                 disaster2.Destroy();
                 disaster1.Destroy();
+                matchPositiveSFX.Play();
             }
             else
             {
@@ -172,10 +176,12 @@ public class GameMode : MonoBehaviour
                     //succesfull worsen
                     disaster2.size *= 2;
                     worsenDialogue.TriggerDialogue();
+                    matchErrorSFX.Play();
                 }
                 else
                 {
                     //unsuccesfull match
+                    matchWrongSFX.Play();
                 }
             }
         }
