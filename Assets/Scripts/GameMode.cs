@@ -15,6 +15,8 @@ public class GameMode : MonoBehaviour
     [SerializeField] private Slider populationSlider;
     [SerializeField] private float populationRegainRate;
     [SerializeField] private float disasterSpawnInterval;
+    [SerializeField] private DialogueTrigger startDialogue;
+    [SerializeField] private DialogueTrigger worsenDialogue;
 
     private bool isSpawningDisasters = true;
     private Disaster selectedDisaster = null;
@@ -76,6 +78,7 @@ public class GameMode : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        startDialogue.TriggerDialogue();
     }
 
     // Update is called once per frame
@@ -113,22 +116,28 @@ public class GameMode : MonoBehaviour
                     if (selectedDisaster != null)
                     {
                         //match
-                        Debug.Log("match " + selectedDisaster.GetDisasterType() + " with " + hitDisaster.GetDisasterType());
+                        //Debug.Log("match " + selectedDisaster.GetDisasterType() + " with " + hitDisaster.GetDisasterType());
                         Match(selectedDisaster, hitDisaster);
+                        selectedDisaster.DisableOutline();
                         selectedDisaster = null;
-                        GetComponent<DialogueTrigger>().TriggerDialogue();
+                        //GetComponent<DialogueTrigger>().TriggerDialogue();
                     }
                     else
                     {
                         //select
                         selectedDisaster = hit.transform.gameObject.GetComponent<Disaster>();
-                        Debug.Log("selected " + selectedDisaster.GetDisasterType());
+                        selectedDisaster.EnableOutline();
+                        //Debug.Log("selected " + selectedDisaster.GetDisasterType());
                     }
                 }
                 else
                 {
                     //unselect
-                    selectedDisaster = null;
+                    if (selectedDisaster)
+                    {
+                        selectedDisaster.DisableOutline();
+                        selectedDisaster = null;
+                    }
                 }
             }
         }
@@ -149,9 +158,10 @@ public class GameMode : MonoBehaviour
             if (matches.Contains(type2))
             {
                 //succesfull match
-                disaster1.Relocate(disaster2.transform);
-                disaster1.ResetSize();
+                //disaster1.Relocate(disaster2.transform);
+                //disaster1.ResetSize();
                 disaster2.Destroy();
+                disaster1.Destroy();
             }
             else
             {
@@ -161,6 +171,7 @@ public class GameMode : MonoBehaviour
                 {
                     //succesfull worsen
                     disaster2.size *= 2;
+                    worsenDialogue.TriggerDialogue();
                 }
                 else
                 {

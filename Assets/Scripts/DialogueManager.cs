@@ -10,9 +10,10 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Animator animator;
+    [SerializeField] private float timeBetweenLetterAnimation = 0.5f;
     private Queue<string> sentences;
 
-    public void Start()
+    public void Awake()
     {
         sentences = new Queue<string>();
     }
@@ -21,8 +22,12 @@ public class DialogueManager : Singleton<DialogueManager>
     public void StartDialogue(Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
+        Time.timeScale = 0;
         nameText.text = dialogue.name;
-        sentences.Clear();
+        if (sentences != null)
+        {
+            sentences.Clear();
+        }
         foreach (var sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
@@ -52,12 +57,14 @@ public class DialogueManager : Singleton<DialogueManager>
         foreach (var letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            //yield return null;
+            yield return new WaitForSecondsRealtime(timeBetweenLetterAnimation);
         }
     }
 
     private void EndDialogue()
     {
+        Time.timeScale = 1;
         animator.SetBool("IsOpen", false);
     }
 }

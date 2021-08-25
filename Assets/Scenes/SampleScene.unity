@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 131460054}
   - component: {fileID: 131460055}
   - component: {fileID: 131460056}
+  - component: {fileID: 131460057}
   m_Layer: 0
   m_Name: GameMode
   m_TagString: Untagged
@@ -428,6 +429,8 @@ MonoBehaviour:
   populationSlider: {fileID: 46296737}
   populationRegainRate: 0.002
   disasterSpawnInterval: 2
+  startDialogue: {fileID: 131460056}
+  worsenDialogue: {fileID: 131460057}
 --- !u!114 &131460056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,9 +446,25 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     sentences:
-    - Wow good job!
+    - Hello! Are you the new guy?
     - nice work
     - hola
+--- !u!114 &131460057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131460053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Omnipresent Being
+    sentences:
+    - WHAT THE HECK ARE YOU DOING?!!
 --- !u!1 &378212034
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +550,6 @@ GameObject:
   m_Component:
   - component: {fileID: 585661791}
   - component: {fileID: 585661790}
-  - component: {fileID: 585661792}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -554,6 +572,7 @@ MonoBehaviour:
   nameText: {fileID: 1439212316}
   dialogueText: {fileID: 1137137249}
   animator: {fileID: 896609704}
+  timeBetweenLetterAnimation: 0.05
 --- !u!4 &585661791
 Transform:
   m_ObjectHideFlags: 0
@@ -568,25 +587,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &585661792
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585661789}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &789714773
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +806,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 63500f39ca1ca734b8303a1836bf9797, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

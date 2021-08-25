@@ -28,6 +28,8 @@ public class Disaster : MonoBehaviour
     [SerializeField] private Transform tornadoModel;
     [SerializeField] private Transform winterstormModel;
     [SerializeField] private float populationDrainRate;
+    [SerializeField] private Outline outline;
+
     private DisasterType disasterType;
     private Transform model;
     private Vector3 modelSize;
@@ -53,6 +55,7 @@ public class Disaster : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        DisableOutline();
         size = startSize;
         iconYScale = transform.localScale.y;
         disasterType = GetRandomDisasterType();
@@ -115,7 +118,10 @@ public class Disaster : MonoBehaviour
             }
         }
         //drain population
-        slider.value -= populationDrainRate * size * Time.deltaTime;
+        if (slider)
+        {
+            slider.value -= populationDrainRate * size * Time.deltaTime;
+        }
         //Earthquake shake
         if (disasterType == DisasterType.Earthquake)
         {
@@ -151,5 +157,15 @@ public class Disaster : MonoBehaviour
             Destroy(model.gameObject);
         }
         Destroy(transform.gameObject);
+    }
+
+    public void EnableOutline()
+    {
+        outline.enabled = true;
+    }
+
+    public void DisableOutline()
+    {
+        outline.enabled = false;
     }
 }
