@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MilkShake;
-using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.UI;
 using static Disaster.DisasterType;
@@ -109,7 +108,7 @@ public class GameMode : MonoBehaviour
             populationSlider.value += populationRegainRate * populationSlider.maxValue * Time.deltaTime;
         }
         //click disasters to select them if an other is selected match them
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
         {
             RaycastHit hit;
             if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
