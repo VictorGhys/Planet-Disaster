@@ -30,6 +30,15 @@ public class Disaster : MonoBehaviour
     [SerializeField] private float populationDrainRate;
     [SerializeField] private Outline outline;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip floodSFX;
+    [SerializeField] private AudioClip fireSFX;
+    [SerializeField] private AudioClip earthquakeSFX;
+    [SerializeField] private AudioClip tornadoSFX;
+    [SerializeField] private AudioClip winterstormSFX;
+    [SerializeField] private float volumeLow = 0.4f;
+    [SerializeField] private float volumeHigh = 0.7f;
+
     private DisasterType disasterType;
     private Transform model;
     private Vector3 modelSize;
@@ -66,40 +75,47 @@ public class Disaster : MonoBehaviour
                 renderer.material = floodMat;
                 modelSize = floodModel.localScale;
                 model = Instantiate(floodModel, transform.position, transform.rotation, transform.parent);
+                audioSource.clip = floodSFX;
                 break;
 
             case DisasterType.Fire:
                 renderer.material = fireMat;
                 modelSize = fireModel.localScale;
                 model = Instantiate(fireModel, transform.position, transform.rotation, transform.parent);
+                audioSource.clip = fireSFX;
                 break;
 
             case DisasterType.Earthquake:
                 renderer.material = earthquakeMat;
                 modelSize = earthquakeModel.localScale;
                 model = Instantiate(earthquakeModel, transform.position, transform.rotation, transform.parent);
+                audioSource.clip = earthquakeSFX;
                 break;
 
             case DisasterType.Tornado:
                 renderer.material = tornadoMat;
                 modelSize = tornadoModel.localScale;
                 model = Instantiate(tornadoModel, transform.position, transform.rotation, transform.parent);
+                audioSource.clip = tornadoSFX;
                 break;
 
             case DisasterType.Winterstorm:
                 renderer.material = winterstormMat;
                 modelSize = winterstormModel.localScale;
                 model = Instantiate(winterstormModel, transform.position, transform.rotation, transform.parent);
+                audioSource.clip = winterstormSFX;
                 break;
 
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        audioSource.Play();
     }
 
     // Update is called once per frame
     private void Update()
     {
+        //Grow
         if (isGrowing)
         {
             if (size < burstSize)
@@ -122,7 +138,7 @@ public class Disaster : MonoBehaviour
         {
             slider.value -= populationDrainRate * size * Time.deltaTime;
         }
-        //Earthquake shake
+        //Earthquake shake animation
         if (disasterType == DisasterType.Earthquake)
         {
             float sin = Mathf.Sin(Time.time * earthquakeShakeSpeed) * earthquakeShakeStrength;
@@ -132,6 +148,9 @@ public class Disaster : MonoBehaviour
             model.GetChild(0).transform.Rotate(transform.up, sin);
             //transform.Rotate(transform.up, sin);
         }
+        //volume adjustment (the bigger the louder)
+        float t = (size - startSize) / (burstSize - startSize);
+        audioSource.volume = Mathf.Lerp(volumeLow, volumeHigh, t);
     }
 
     public void ResetSize()
@@ -152,6 +171,7 @@ public class Disaster : MonoBehaviour
 
     public void Destroy()
     {
+        audioSource.Stop();
         if (model)
         {
             Destroy(model.gameObject);

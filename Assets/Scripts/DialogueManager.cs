@@ -9,9 +9,12 @@ public class DialogueManager : Singleton<DialogueManager>
 {
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private TMP_Text skipButtonText;
     [SerializeField] private Animator animator;
     [SerializeField] private float timeBetweenLetterAnimation = 0.5f;
+
     private Queue<string> sentences;
+    private int timesClickedOnSkip = 0;
 
     public void Awake()
     {
@@ -66,5 +69,22 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         Time.timeScale = 1;
         animator.SetBool("IsOpen", false);
+        timesClickedOnSkip = 0;
+        skipButtonText.text = "Skip";
+    }
+
+    public void SkipDialogue()
+    {
+        timesClickedOnSkip++;
+        switch (timesClickedOnSkip)
+        {
+            case 1:
+                skipButtonText.text = "Sure?";
+                break;
+
+            case 2:
+                EndDialogue();
+                break;
+        }
     }
 }
