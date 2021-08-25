@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MilkShake;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] private AudioSource matchPositiveSFX;
     [SerializeField] private AudioSource matchWrongSFX;
     [SerializeField] private AudioSource matchErrorSFX;
+    [SerializeField] private ShakePreset errorShakePreset;
 
     private bool isSpawningDisasters = true;
     private Disaster selectedDisaster = null;
@@ -177,6 +179,8 @@ public class GameMode : MonoBehaviour
                     disaster2.size *= 2;
                     worsenDialogue.TriggerDialogue();
                     matchErrorSFX.Play();
+                    //camera.transform.parent.GetComponent<Shaker>().Shake(errorShakePreset);
+                    camera.GetComponent<Shaker>().Shake(errorShakePreset);
                 }
                 else
                 {
