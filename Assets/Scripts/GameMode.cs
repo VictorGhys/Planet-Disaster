@@ -19,16 +19,18 @@ public class GameMode : MonoBehaviour
     [SerializeField] private float populationRegainRate;
     [SerializeField] private float disasterSpawnInterval;
     [SerializeField] private DialogueTrigger worsenDialogue;
+    [SerializeField] private DialogueTrigger gameEndDialogue;
+    [SerializeField] private DialogueTrigger gameOverDialogue;
     [SerializeField] private AudioSource matchPositiveSFX;
     [SerializeField] private AudioSource matchWrongSFX;
     [SerializeField] private AudioSource matchErrorSFX;
     [SerializeField] private ShakePreset errorShakePreset;
     [SerializeField] private Wave[] waves;
+    [SerializeField] private int currentWave = 0;
 
     private Disaster selectedDisaster = null;
     private bool gameOver = false;
     private float spawnTime;
-    private int currentWave = 0;
     private int disastersToSpawnThisWave = 0;
     private int disastersSpawned = 0;
     private bool isBossBattle = false;
@@ -76,7 +78,7 @@ public class GameMode : MonoBehaviour
     private Disaster.DisasterType GetRandomDisasterType()
     {
         Array values = Enum.GetValues(typeof(Disaster.DisasterType));
-        Disaster.DisasterType randomType = (Disaster.DisasterType)values.GetValue(Random.Range(1, values.Length + 1));
+        Disaster.DisasterType randomType = (Disaster.DisasterType)values.GetValue(Random.Range(1, values.Length));
         return randomType;
     }
 
@@ -286,6 +288,7 @@ public class GameMode : MonoBehaviour
                 disaster2.Destroy();
                 disaster1.Destroy();
                 matchPositiveSFX.Play();
+                isPuzzleSolvable = false;
             }
             else
             {
@@ -301,6 +304,7 @@ public class GameMode : MonoBehaviour
                     matchErrorSFX.Play();
                     //camera.transform.parent.GetComponent<Shaker>().Shake(errorShakePreset);
                     camera.GetComponent<Shaker>().Shake(errorShakePreset);
+                    isPuzzleSolvable = false;
                 }
                 else
                 {
@@ -309,5 +313,10 @@ public class GameMode : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RemoveDisaster(Disaster disaster)
+    {
+        disasters.Remove(disaster);
     }
 }

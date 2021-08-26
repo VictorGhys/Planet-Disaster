@@ -431,13 +431,15 @@ MonoBehaviour:
   populationRegainRate: 0.002
   disasterSpawnInterval: 2
   worsenDialogue: {fileID: 545334042}
+  gameEndDialogue: {fileID: 670011310}
+  gameOverDialogue: {fileID: 1534293881}
   matchPositiveSFX: {fileID: 131460060}
   matchWrongSFX: {fileID: 131460059}
   matchErrorSFX: {fileID: 131460058}
   errorShakePreset: {fileID: 11400000, guid: 560e1fe6a5de60f42a5a2c8d3e0f7a27, type: 2}
   waves:
   - startDialogue: {fileID: 1292888812}
-    amountOfDisastersToSpawn: 2
+    amountOfDisastersToSpawn: 4
     spawnInterval: 3
     isBossBattle: 0
   - startDialogue: {fileID: 717004888}
@@ -452,6 +454,7 @@ MonoBehaviour:
     amountOfDisastersToSpawn: 25
     spawnInterval: 1.5
     isBossBattle: 0
+  currentWave: 0
 --- !u!82 &131460058
 AudioSource:
   m_ObjectHideFlags: 0
@@ -962,6 +965,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &670011308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 670011309}
+  - component: {fileID: 670011310}
+  m_Layer: 0
+  m_Name: gameEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &670011309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670011308}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 736267792}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &670011310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670011308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Omnipresent Being
+    pickRandom: 0
+    sentences:
+    - You did it!
+    - These earthlings sure are lucky to have you as their guardian.
+    - 
 --- !u!1 &717004886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1097,8 @@ Transform:
   - {fileID: 2084328727}
   - {fileID: 1436217712}
   - {fileID: 545334041}
+  - {fileID: 1534293880}
+  - {fileID: 670011309}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1994,9 +2049,9 @@ MonoBehaviour:
     name: Omnipresent Being
     pickRandom: 0
     sentences:
-    - 'Damn, these disasters seem to get worse. '
-    - Make sure you fix them before they wipe out a whole country or a continent.
-    - I need to go find out what is causing these disasters. Bye.
+    - Man you are like a disaster solving prodigy or something.
+    - I haven't found what is causing these disasters.
+    - You just keep fixing them, ok?
 --- !u!1 &1439212314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,6 +2393,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523595344}
   m_CullTransparentMesh: 0
+--- !u!1 &1534293879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1534293880}
+  - component: {fileID: 1534293881}
+  m_Layer: 0
+  m_Name: gameOver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1534293880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534293879}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 736267792}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1534293881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534293879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Omnipresent Being
+    pickRandom: 1
+    sentences:
+    - 
+    - 
+    - 
 --- !u!1001 &1720473226
 PrefabInstance:
   m_ObjectHideFlags: 0

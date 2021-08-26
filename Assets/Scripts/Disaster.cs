@@ -13,6 +13,7 @@ public class Disaster : MonoBehaviour
 
     [SerializeField] private float startSize = 1;
     [SerializeField] private float burstSize = 10;
+    [SerializeField] private float burstPenalty = 0.1f;
     [SerializeField] private float sizeGrowthSpeed = 10;
     [SerializeField] private float earthquakeShakeSpeed = 1;
     [SerializeField] private float earthquakeShakeStrength = 1;
@@ -38,6 +39,7 @@ public class Disaster : MonoBehaviour
     [SerializeField] private AudioClip winterstormSFX;
     [SerializeField] private float volumeLow = 0.4f;
     [SerializeField] private float volumeHigh = 0.7f;
+    [SerializeField] private Transform burstModel;
 
     private DisasterType disasterType;
     private Transform model;
@@ -128,6 +130,9 @@ public class Disaster : MonoBehaviour
             else
             {
                 //burst
+                slider.value -= burstPenalty;
+                Instantiate(burstModel, transform.position + transform.up, transform.rotation);
+                Destroy();
             }
         }
         //drain population
@@ -168,6 +173,7 @@ public class Disaster : MonoBehaviour
 
     public void Destroy()
     {
+        FindObjectOfType<GameMode>().RemoveDisaster(this);
         audioSource.Stop();
         if (model)
         {

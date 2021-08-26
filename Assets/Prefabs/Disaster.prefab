@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSize: 1
   burstSize: 6
+  burstPenalty: 0.1
   sizeGrowthSpeed: 0.1
   earthquakeShakeSpeed: 10
   earthquakeShakeStrength: 2
@@ -136,6 +137,7 @@ MonoBehaviour:
   winterstormSFX: {fileID: 8300000, guid: e0b822f91deeee642946d493ad079a4a, type: 3}
   volumeLow: 0.1
   volumeHigh: 0.5
+  burstModel: {fileID: 4882558394911734, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
 --- !u!114 &-6269629966318201529
 MonoBehaviour:
   m_ObjectHideFlags: 0
