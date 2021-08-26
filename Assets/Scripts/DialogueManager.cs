@@ -12,6 +12,8 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private TMP_Text skipButtonText;
     [SerializeField] private Animator animator;
     [SerializeField] private float timeBetweenLetterAnimation = 0.5f;
+    [SerializeField] private AudioSource skipSFX;
+    [SerializeField] private AudioSource blipSFX;
 
     private Queue<string> sentences;
     private int timesClickedOnSkip = 0;
@@ -69,12 +71,14 @@ public class DialogueManager : Singleton<DialogueManager>
     private IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
+        blipSFX.Play();
         foreach (var letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             //yield return null;
             yield return new WaitForSecondsRealtime(timeBetweenLetterAnimation);
         }
+        blipSFX.Stop();
     }
 
     private void EndDialogue()
@@ -96,6 +100,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
             case 2:
                 EndDialogue();
+                skipSFX.Play();
                 break;
         }
     }
