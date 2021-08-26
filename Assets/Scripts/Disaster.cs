@@ -46,19 +46,17 @@ public class Disaster : MonoBehaviour
 
     public enum DisasterType
     {
-        Flood, Fire, Earthquake, Tornado, Winterstorm
-    }
-
-    private DisasterType GetRandomDisasterType()
-    {
-        Array values = Enum.GetValues(typeof(DisasterType));
-        DisasterType randomType = (DisasterType)values.GetValue(Random.Range(0, values.Length));
-        return randomType;
+        None, Flood, Fire, Earthquake, Tornado, Winterstorm
     }
 
     public DisasterType GetDisasterType()
     {
         return disasterType;
+    }
+
+    public void SetDisasterType(DisasterType type)
+    {
+        disasterType = type;
     }
 
     // Start is called before the first frame update
@@ -67,7 +65,6 @@ public class Disaster : MonoBehaviour
         DisableOutline();
         size = startSize;
         iconYScale = transform.localScale.y;
-        disasterType = GetRandomDisasterType();
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         switch (disasterType)
         {

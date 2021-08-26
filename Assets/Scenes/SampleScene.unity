@@ -386,8 +386,6 @@ GameObject:
   m_Component:
   - component: {fileID: 131460054}
   - component: {fileID: 131460055}
-  - component: {fileID: 131460056}
-  - component: {fileID: 131460057}
   - component: {fileID: 131460060}
   - component: {fileID: 131460059}
   - component: {fileID: 131460058}
@@ -432,55 +430,28 @@ MonoBehaviour:
   populationSlider: {fileID: 46296737}
   populationRegainRate: 0.002
   disasterSpawnInterval: 2
-  startDialogue: {fileID: 131460056}
-  worsenDialogue: {fileID: 131460057}
+  worsenDialogue: {fileID: 545334042}
   matchPositiveSFX: {fileID: 131460060}
   matchWrongSFX: {fileID: 131460059}
   matchErrorSFX: {fileID: 131460058}
   errorShakePreset: {fileID: 11400000, guid: 560e1fe6a5de60f42a5a2c8d3e0f7a27, type: 2}
---- !u!114 &131460056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131460053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Omnipresent Being
-    sentences:
-    - Hello! Are you the new one?
-    - Of course you are, I can see the green behind your ears from here.
-    - Listen, all you have to do is babysit this planet. It's that easy.
-    - You can look around by clicking right mouse button and draging.
-    - Good luck! Bye.
-    - 'Oh, I almost forgot. '
-    - In the rare case that some natural disasters develop. You need to combine them
-      by selecting one and then clicking on the other.
-    - But make sure they fix each other. Like a FLOOD fixes FIRE.
-    - And make double sure they don't worsen each other. Like a FIRE worsens a TORNADO.
-      Trust me you don't want a FIRE TORNADO!
-    - That's it, you are all on your own now. Just don't let there be chaos. Bye.
---- !u!114 &131460057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131460053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Omnipresent Being
-    sentences:
-    - WHAT THE HECK ARE YOU DOING?!!
+  waves:
+  - startDialogue: {fileID: 1292888812}
+    amountOfDisastersToSpawn: 2
+    spawnInterval: 3
+    isBossBattle: 0
+  - startDialogue: {fileID: 717004888}
+    amountOfDisastersToSpawn: 15
+    spawnInterval: 2.5
+    isBossBattle: 0
+  - startDialogue: {fileID: 2084328728}
+    amountOfDisastersToSpawn: 20
+    spawnInterval: 2
+    isBossBattle: 0
+  - startDialogue: {fileID: 1436217713}
+    amountOfDisastersToSpawn: 25
+    spawnInterval: 1.5
+    isBossBattle: 0
 --- !u!82 &131460058
 AudioSource:
   m_ObjectHideFlags: 0
@@ -844,6 +815,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378212034}
   m_CullTransparentMesh: 0
+--- !u!1 &545334040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 545334041}
+  - component: {fileID: 545334042}
+  m_Layer: 0
+  m_Name: worsen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &545334041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545334040}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 736267792}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &545334042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545334040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Omnipresent Being
+    pickRandom: 1
+    sentences:
+    - NO NO NO, YOU CAN'T DO THAT!
+    - WHAT ARE YOU DOING?!
+    - STOP DOING THAT, YOU ARE MAKING IT WORSE!
 --- !u!1 &582827703
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +961,91 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &717004886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 717004887}
+  - component: {fileID: 717004888}
+  m_Layer: 0
+  m_Name: wave2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &717004887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717004886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 736267792}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &717004888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717004886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Omnipresent Being
+    pickRandom: 0
+    sentences:
+    - Wow, good job fixing these disasters!
+    - Weird that there were so many disasters. Hmm... Must have been a one time thing.
+    - Anyways, you are doing great keep it up!
+--- !u!1 &736267791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736267792}
+  m_Layer: 0
+  m_Name: Dialogues
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &736267792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736267791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 504.70526, y: 12.9123955, z: 360.1311}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1292888811}
+  - {fileID: 717004887}
+  - {fileID: 2084328727}
+  - {fileID: 1436217712}
+  - {fileID: 545334041}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789714773
 GameObject:
@@ -1615,6 +1721,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137137247}
   m_CullTransparentMesh: 0
+--- !u!1 &1292888810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1292888811}
+  - component: {fileID: 1292888812}
+  m_Layer: 0
+  m_Name: wave1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1292888811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292888810}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 736267792}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1292888812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292888810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Omnipresent Being
+    pickRandom: 0
+    sentences:
+    - Hello! Are you the new one?
+    - Of course you are, I can see the green behind your ears from here.
+    - Listen, all you have to do is babysit this planet. It's that easy.
+    - You can look around by clicking right mouse button and draging.
+    - Good luck! Bye.
+    - 'Oh, I almost forgot. '
+    - In the rare case that some natural disasters develop. You need to combine them
+      by selecting one and then clicking on the other.
+    - But make sure they fix each other. Like a FLOOD fixes FIRE.
+    - And make double sure they don't worsen each other. Like a FIRE worsens a TORNADO.
+      Trust me you don't want a FIRE TORNADO!
+    - That's it, you are all on your own now. Just don't let there be chaos. Bye.
 --- !u!1 &1293195395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,6 +1947,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc5f4d827307af24e90794e75d0b917e, type: 3}
+--- !u!1 &1436217711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1436217712}
+  - component: {fileID: 1436217713}
+  m_Layer: 0
+  m_Name: wave4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1436217712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436217711}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 736267792}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1436217713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436217711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Omnipresent Being
+    pickRandom: 0
+    sentences:
+    - 'Damn, these disasters seem to get worse. '
+    - Make sure you fix them before they wipe out a whole country or a continent.
+    - I need to go find out what is causing these disasters. Bye.
 --- !u!1 &1439212314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +2054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: Omnipresent Being
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2826,6 +3041,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2084328726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2084328727}
+  - component: {fileID: 2084328728}
+  m_Layer: 0
+  m_Name: wave3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2084328727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084328726}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 736267792}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084328728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084328726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e133567bfba8204f8c2ab3b21dedb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Omnipresent Being
+    pickRandom: 0
+    sentences:
+    - 'Damn, these disasters seem to get worse. '
+    - Make sure you fix them before they wipe out a whole country or a continent.
+    - I need to go find out what is causing these disasters. Bye.
 --- !u!1 &2117829141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 163060, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}

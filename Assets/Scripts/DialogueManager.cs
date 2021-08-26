@@ -26,14 +26,26 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         animator.SetBool("IsOpen", true);
         Time.timeScale = 0;
-        nameText.text = dialogue.name;
+        if (dialogue.name != "")
+        {
+            nameText.text = dialogue.name;
+        }
         if (sentences != null)
         {
             sentences.Clear();
         }
-        foreach (var sentence in dialogue.sentences)
+
+        if (dialogue.pickRandom)
         {
-            sentences.Enqueue(sentence);
+            int r = Random.Range(0, dialogue.sentences.Length);
+            sentences.Enqueue(dialogue.sentences[r]);
+        }
+        else
+        {
+            foreach (var sentence in dialogue.sentences)
+            {
+                sentences.Enqueue(sentence);
+            }
         }
 
         DisplayNextSentence();
