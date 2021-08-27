@@ -119,6 +119,16 @@ public class GameMode : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //regain population
+        if (populationSlider.value < populationSlider.maxValue)
+        {
+            if (populationSlider.value <= 0)
+            {
+                //game over restart wave
+                gameOver = true;
+            }
+            populationSlider.value += populationRegainRate * populationSlider.maxValue * Time.deltaTime;
+        }
         //spawning
         if (disastersSpawned < disastersToSpawnThisWave)
         {
@@ -133,7 +143,7 @@ public class GameMode : MonoBehaviour
         else
         {
             //check if solved
-            if (disasters.Count == 0)
+            if (disasters.Count == 0 && !gameOver)
             {
                 //next wave
                 NextWave();
@@ -143,15 +153,7 @@ public class GameMode : MonoBehaviour
                 Solve();
             }
         }
-        //regain population
-        if (populationSlider.value < populationSlider.maxValue)
-        {
-            if (populationSlider.value <= 0)
-            {
-                gameOver = true;
-            }
-            populationSlider.value += populationRegainRate * populationSlider.maxValue * Time.deltaTime;
-        }
+
         //click disasters to select them if an other is selected match them
         if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
         {
@@ -201,6 +203,7 @@ public class GameMode : MonoBehaviour
             disastersSpawned = 0;
             disasterSpawnInterval = waves[currentWave].spawnInterval;
             spawnTime = 0;
+            populationSlider.value = populationSlider.maxValue;
             //dialogue
             waves[currentWave].startDialogue.TriggerDialogue();
         }
@@ -318,5 +321,34 @@ public class GameMode : MonoBehaviour
     public void RemoveDisaster(Disaster disaster)
     {
         disasters.Remove(disaster);
+    }
+
+    public bool GetIsGameOver()
+    {
+        return gameOver;
+    }
+
+    public void RestartWave()
+    {
+        currentWave--;
+        NextWave();
+        gameOver = false;
+
+        //Array to hold all disasters obj
+        Disaster[] allDisasters = new Disaster[disasters.Count];
+
+        int i = 0;
+        //Find all disaster obj and store to that array
+        foreach (Disaster disaster in disasters)
+        {
+            allDisasters[i] = disaster;
+            i += 1;
+        }
+
+        //Now destroy them
+        foreach (Disaster disaster in allDisasters)
+        {
+            disaster.Destroy();
+        }
     }
 }

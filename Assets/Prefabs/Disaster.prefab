@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSize: 1
   burstSize: 6
-  burstPenalty: 0.1
+  burstPenalty: 0.12
   sizeGrowthSpeed: 0.1
   earthquakeShakeSpeed: 10
   earthquakeShakeStrength: 2
