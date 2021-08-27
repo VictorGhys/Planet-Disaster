@@ -123,7 +123,7 @@ MonoBehaviour:
   tornadoMat: {fileID: 2100000, guid: ce21b5c3cd604b24cbe3aba9627d9d1a, type: 2}
   winterstormMat: {fileID: 2100000, guid: 2945f3c9c0b78a94c956e33e99b862be, type: 2}
   floodModel: {fileID: 3276062043573930302, guid: 406da38e8239e7f49bd859452231a3c5, type: 3}
-  fireModel: {fileID: 2158165671197344451, guid: f7c08e469f362d3429dfcc9fe56614b7, type: 3}
+  fireModel: {fileID: 2158165671197344451, guid: 23896084635d88e4191c1276824787ae, type: 3}
   earthquakeModel: {fileID: 6305290590117711157, guid: 41db3416be3a51e4595b5b8b34d1f20f, type: 3}
   tornadoModel: {fileID: 3019425616423967649, guid: b1858383fbd475a48b372ae999536653, type: 3}
   winterstormModel: {fileID: 6370895378893424725, guid: 1562780e9e9fde34a9cfd17727cee52e, type: 3}

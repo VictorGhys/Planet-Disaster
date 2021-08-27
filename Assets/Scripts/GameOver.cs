@@ -8,25 +8,21 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField] private GameMode _gameMode;
 
-    [SerializeField]
-    private GameObject _gameOverUI;
+    [SerializeField] private GameObject _gameOverUI;
 
-    [SerializeField]
-    private Transform _hud;
+    [SerializeField] private Transform _hud;
 
     private bool _doOnce = true;
     private EventSystem _eventSystem;
 
-    [SerializeField]
-    private GameObject _resumeButton;
+    [SerializeField] private GameObject _resumeButton;
 
-    [SerializeField]
-    private CanvasGroup _canvasGroup;
+    [SerializeField] private CanvasGroup _canvasGroup;
 
-    [SerializeField]
-    private float _fadeInSpeed = 2.0f;
+    [SerializeField] private float _fadeInSpeed = 2.0f;
 
     [SerializeField] private float _menuDelay = 3.0f;
+    [SerializeField] private Transform earthExplosion;
     private bool _menuShown = false;
 
     private void Awake()
@@ -43,6 +39,7 @@ public class GameOver : MonoBehaviour
         {
             Invoke("ShowMenu", _menuDelay);
             _doOnce = false;
+            Instantiate(earthExplosion);
         }
 
         if (_canvasGroup.alpha < 1f && _menuShown)

@@ -343,6 +343,7 @@ MonoBehaviour:
   _canvasGroup: {fileID: 1219760634998601547}
   _fadeInSpeed: 0.5
   _menuDelay: 1
+  earthExplosion: {fileID: 0}
 --- !u!1 &4035603469243619788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1108,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play Again
+  m_text: Retry wave
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

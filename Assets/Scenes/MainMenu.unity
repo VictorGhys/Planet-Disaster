@@ -935,7 +935,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -9}
-  m_SizeDelta: {x: -156.36261, y: -394.96512}
+  m_SizeDelta: {x: -156.36261, y: -280.37476}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272313318
 MonoBehaviour:
@@ -959,9 +959,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "You can look around by clicking right mouse button and draging.\nYou need
     to combine natural disasters by selecting one and then clicking on the other.
-    \nBut make sure they fix each other. Like a FLOOD fixes FIRE. \nAnd make double
-    sure they don't worsen each other. Like a FIRE worsens a TORNADO. Trust me you
-    don't want a FIRE TORNADO!"
+    \nBut make sure they fix each other. Like a FLOOD fixes FIRE. \nThe order matters
+    a FIRE doesn't fix a FLOOD\nAnd make double sure they don't worsen each other.
+    Like a FIRE worsens a TORNADO. Trust me you don't want a FIRE TORNADO!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3047,7 +3047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1111014859
 RectTransform:
   m_ObjectHideFlags: 0
