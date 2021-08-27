@@ -30,10 +30,10 @@ public class GameMode : MonoBehaviour
 
     private Disaster selectedDisaster = null;
     private bool gameOver = false;
+    private bool hasGameEnded = false;
     private float spawnTime;
     private int disastersToSpawnThisWave = 0;
     private int disastersSpawned = 0;
-    private bool isBossBattle = false;
     private List<Disaster> disasters;
     private bool isPuzzleSolvable;
 
@@ -145,8 +145,16 @@ public class GameMode : MonoBehaviour
             //check if solved
             if (disasters.Count == 0 && !gameOver)
             {
-                //next wave
-                NextWave();
+                if (currentWave == waves.Length)
+                {
+                    //end the game
+                    hasGameEnded = true;
+                }
+                else
+                {
+                    //next wave
+                    NextWave();
+                }
             }
             else
             {
@@ -155,7 +163,7 @@ public class GameMode : MonoBehaviour
         }
 
         //click disasters to select them if an other is selected match them
-        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
+        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0 && !gameOver)
         {
             RaycastHit hit;
             if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
@@ -196,7 +204,7 @@ public class GameMode : MonoBehaviour
 
     private void NextWave()
     {
-        if (currentWave != waves.Length)
+        if (currentWave < waves.Length - 1)
         {
             currentWave++;
             disastersToSpawnThisWave = waves[currentWave].amountOfDisastersToSpawn;
@@ -210,6 +218,8 @@ public class GameMode : MonoBehaviour
         else
         {
             Debug.Log("Game has ended");
+            currentWave++;
+            gameEndDialogue.TriggerDialogue();
         }
     }
 
@@ -326,6 +336,11 @@ public class GameMode : MonoBehaviour
     public bool GetIsGameOver()
     {
         return gameOver;
+    }
+
+    public bool GetHasGameEnded()
+    {
+        return hasGameEnded;
     }
 
     public void RestartWave()

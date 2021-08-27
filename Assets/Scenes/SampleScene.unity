@@ -558,32 +558,25 @@ MonoBehaviour:
   - startDialogue: {fileID: 1292888812}
     amountOfDisastersToSpawn: 4
     spawnInterval: 3
-    isBossBattle: 0
   - startDialogue: {fileID: 717004888}
     amountOfDisastersToSpawn: 15
     spawnInterval: 2.5
-    isBossBattle: 0
   - startDialogue: {fileID: 2084328728}
     amountOfDisastersToSpawn: 20
     spawnInterval: 2
-    isBossBattle: 0
   - startDialogue: {fileID: 1436217713}
     amountOfDisastersToSpawn: 25
-    spawnInterval: 1.5
-    isBossBattle: 0
+    spawnInterval: 1.6
   - startDialogue: {fileID: 1625833300}
     amountOfDisastersToSpawn: 30
-    spawnInterval: 1.4
-    isBossBattle: 0
+    spawnInterval: 1.5
   - startDialogue: {fileID: 135582173}
     amountOfDisastersToSpawn: 35
-    spawnInterval: 1.3
-    isBossBattle: 0
+    spawnInterval: 1.4
   - startDialogue: {fileID: 1562486462}
-    amountOfDisastersToSpawn: 40
-    spawnInterval: 1.2
-    isBossBattle: 0
-  currentWave: 3
+    amountOfDisastersToSpawn: 4
+    spawnInterval: 1.3
+  currentWave: 6
 --- !u!82 &131460058
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3666,6 +3659,111 @@ MonoBehaviour:
     - Make sure you fix them before they burst and wipe out a whole country or a
       continent.
     - I need to go find out what is causing these disasters. Bye.
+--- !u!1001 &2104225594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1517092396444068637, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: _gameMode
+      value: 
+      objectReference: {fileID: 131460055}
+    - target: {fileID: 1517092396444068637, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: _hud
+      value: 
+      objectReference: {fileID: 2387077762337366632}
+    - target: {fileID: 3026174857772535070, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_Name
+      value: GameEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084983223988638356, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5617212a537679a488c4448c7371f7ae, type: 3}
 --- !u!1 &2117829141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 163060, guid: c2e22098ce7c8da4590cceb5113bd50e, type: 3}
