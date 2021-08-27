@@ -191,4 +191,9 @@ public class Disaster : MonoBehaviour
     {
         outline.enabled = false;
     }
+
+    public float GetBurstSize()
+    {
+        return burstSize;
+    }
 }

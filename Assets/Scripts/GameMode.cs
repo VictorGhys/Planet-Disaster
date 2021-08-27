@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MilkShake;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Disaster.DisasterType;
@@ -25,8 +26,9 @@ public class GameMode : MonoBehaviour
     [SerializeField] private AudioSource matchWrongSFX;
     [SerializeField] private AudioSource matchErrorSFX;
     [SerializeField] private ShakePreset errorShakePreset;
-    [SerializeField] private Wave[] waves;
     [SerializeField] private int currentWave = 0;
+    [SerializeField] private TMP_Text waveHud;
+    [SerializeField] private Wave[] waves;
 
     private Disaster selectedDisaster = null;
     private bool gameOver = false;
@@ -90,6 +92,7 @@ public class GameMode : MonoBehaviour
         int n = 0;
         while (n < 100)
         {
+            //make sure the disaster is on land
             rand = Random.onUnitSphere;
             randPos = rand * earthRadius;
             if (Physics.Raycast(randPos + rand, -rand, out hit, earthRadius))
@@ -98,7 +101,14 @@ public class GameMode : MonoBehaviour
                 float sample = landWaterTex.GetPixelBilinear(texCoord.x, texCoord.y).a;
                 if (sample < 0.5f)
                 {
-                    return randPos;
+                    //make sure there isn't an other disaster nearby
+                    float radius = disasterPF.GetComponent<CapsuleCollider>().radius *
+                                   disasterPF.GetComponent<Disaster>().GetBurstSize();
+                    var colliders = Physics.OverlapSphere(randPos, radius);
+                    if (colliders.Length <= 1)
+                    {
+                        return randPos;
+                    }
                 }
             }
             n++;
@@ -214,6 +224,7 @@ public class GameMode : MonoBehaviour
             populationSlider.value = populationSlider.maxValue;
             //dialogue
             waves[currentWave].startDialogue.TriggerDialogue();
+            waveHud.text = (currentWave + 2021).ToString();
         }
         else
         {
