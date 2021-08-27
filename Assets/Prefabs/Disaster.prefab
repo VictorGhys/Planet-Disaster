@@ -135,9 +135,14 @@ MonoBehaviour:
   earthquakeSFX: {fileID: 8300000, guid: 52083d25e72271145bb3520ad4d3d4a6, type: 3}
   tornadoSFX: {fileID: 8300000, guid: 2ee6d8a78a84055419438db7586a6374, type: 3}
   winterstormSFX: {fileID: 8300000, guid: e0b822f91deeee642946d493ad079a4a, type: 3}
-  volumeLow: 0.1
-  volumeHigh: 0.5
+  volumeLow: 0.2
+  volumeHigh: 0.55
   burstModel: {fileID: 4882558394911734, guid: 7e48ba6b1b968764490bbc70b66e3fe1, type: 3}
+  floodIcon: {fileID: 21300000, guid: c458b68de1d2a454f8472df26ce6d37b, type: 3}
+  fireIcon: {fileID: 21300000, guid: 3ab7f265e81b5cb46a11ff7efb007218, type: 3}
+  earthquakeIcon: {fileID: 21300000, guid: f82a97f335033a14baf6ab56836b7069, type: 3}
+  tornadoIcon: {fileID: 21300000, guid: c939f9c25753bac42b465f4d66a7ad42, type: 3}
+  winterstormIcon: {fileID: 21300000, guid: c444144042b70c34abd9798ec5aae8a0, type: 3}
 --- !u!114 &-6269629966318201529
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1095,60 +1095,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MUSIC:
-
-    Outpost X by Neon.Deflector
-
-    https://neondeflector.bandcamp.com
-
-    Promoted
-    by Royalty Free Planet: https://royaltyfreeplanet.com
-
-    Creative Commons Attribution
-    3.0
-
-    http://bit.ly/RFP_CClicense
-
-
-    SOUND EFFECTS:
-
-    Sound effects
-    obtained from https://www.zapsplat.com
-
-
-    VISUAL EFFECTS:
-
-    Jean Moreno
-
-
-    ART:
-
-    MilkyWay
-    - Adam Bielecki
-
-    Solar flare - Stagit East
-
-    Earth model - Jeff Johnson
-
-    Clouds
-    Model - farhad.Guli
-
-    Tornado Animation - Paxar095
-
-    Fire Animation - Sebastian
-    Valla
-
-    Water Animation - Artise1
-
-    Bomb Crack Ground Line - paulyang
-
-
-    EVERYTHING
-    ELSE:
-
-    VICTOR GHYS
-
-'
+  m_text: "MUSIC:\nOutpost X by Neon.Deflector\nhttps://neondeflector.bandcamp.com\nPromoted
+    by Royalty Free Planet: https://royaltyfreeplanet.com\nCreative Commons Attribution
+    3.0\nhttp://bit.ly/RFP_CClicense\n\nSOUND EFFECTS:\nSound effects obtained from
+    https://www.zapsplat.com\n\nVISUAL EFFECTS:\nJean Moreno\n\nART: \nMilkyWay -
+    Adam Bielecki\nSolar flare - Stagit East\nEarth model - Jeff Johnson\nClouds
+    Model - farhad.Guli\nTornado Animation - Paxar095\nFire Animation - Sebastian
+    Valla\nWater Animation - Artise1\nBomb Crack Ground Line - paulyang\nSpaceX BFR
+    - Forest Katsch\n(acquired under license: https://creativecommons.org/licenses/by/4.0/0)\n\nEVERYTHING
+    ELSE:\nVICTOR GHYS\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1175,8 +1130,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.54
-  m_fontSizeBase: 26.54
+  m_fontSize: 25.09
+  m_fontSizeBase: 25.09
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

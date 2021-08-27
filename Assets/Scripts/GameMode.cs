@@ -28,8 +28,11 @@ public class GameMode : MonoBehaviour
     [SerializeField] private ShakePreset errorShakePreset;
     [SerializeField] private int currentWave = 0;
     [SerializeField] private TMP_Text waveHud;
-    [SerializeField] private Wave[] waves;
+    [SerializeField] private TMP_Text selectedDisasterTypeHud;
+    [SerializeField] private Image selectedDisasterIconHud;
+    [SerializeField] private Transform selectedText;
 
+    [SerializeField] private Wave[] waves;
     private Disaster selectedDisaster = null;
     private bool gameOver = false;
     private bool hasGameEnded = false;
@@ -189,6 +192,9 @@ public class GameMode : MonoBehaviour
                         Match(selectedDisaster, hitDisaster);
                         selectedDisaster.DisableOutline();
                         selectedDisaster = null;
+                        selectedDisasterIconHud.color = Color.clear;
+                        selectedDisasterTypeHud.text = "";
+                        selectedText.gameObject.SetActive(false);
                         //GetComponent<DialogueTrigger>().TriggerDialogue();
                     }
                     else
@@ -197,6 +203,10 @@ public class GameMode : MonoBehaviour
                         selectedDisaster = hit.transform.gameObject.GetComponent<Disaster>();
                         selectedDisaster.EnableOutline();
                         //Debug.Log("selected " + selectedDisaster.GetDisasterType());
+                        selectedDisasterIconHud.color = Color.white;
+                        selectedDisasterTypeHud.text = selectedDisaster.GetDisasterType().ToString();
+                        selectedDisasterIconHud.sprite = selectedDisaster.GetDisasterIcon();
+                        selectedText.gameObject.SetActive(true);
                     }
                 }
                 else
@@ -206,6 +216,9 @@ public class GameMode : MonoBehaviour
                     {
                         selectedDisaster.DisableOutline();
                         selectedDisaster = null;
+                        selectedDisasterIconHud.color = Color.clear;
+                        selectedDisasterTypeHud.text = "";
+                        selectedText.gameObject.SetActive(false);
                     }
                 }
             }

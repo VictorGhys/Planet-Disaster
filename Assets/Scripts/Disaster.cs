@@ -41,10 +41,17 @@ public class Disaster : MonoBehaviour
     [SerializeField] private float volumeHigh = 0.7f;
     [SerializeField] private Transform burstModel;
 
+    [SerializeField] private Sprite floodIcon;
+    [SerializeField] private Sprite fireIcon;
+    [SerializeField] private Sprite earthquakeIcon;
+    [SerializeField] private Sprite tornadoIcon;
+    [SerializeField] private Sprite winterstormIcon;
+
     private DisasterType disasterType;
     private Transform model;
     private Vector3 modelSize;
     private float iconYScale;
+    private Sprite icon;
 
     public enum DisasterType
     {
@@ -71,6 +78,7 @@ public class Disaster : MonoBehaviour
         switch (disasterType)
         {
             case DisasterType.Flood:
+                icon = floodIcon;
                 renderer.material = floodMat;
                 modelSize = floodModel.localScale;
                 model = Instantiate(floodModel, transform.position, transform.rotation, transform.parent);
@@ -78,6 +86,7 @@ public class Disaster : MonoBehaviour
                 break;
 
             case DisasterType.Fire:
+                icon = fireIcon;
                 renderer.material = fireMat;
                 modelSize = fireModel.localScale;
                 model = Instantiate(fireModel, transform.position, transform.rotation, transform.parent);
@@ -85,6 +94,7 @@ public class Disaster : MonoBehaviour
                 break;
 
             case DisasterType.Earthquake:
+                icon = earthquakeIcon;
                 renderer.material = earthquakeMat;
                 modelSize = earthquakeModel.localScale;
                 model = Instantiate(earthquakeModel, transform.position, transform.rotation, transform.parent);
@@ -92,6 +102,7 @@ public class Disaster : MonoBehaviour
                 break;
 
             case DisasterType.Tornado:
+                icon = tornadoIcon;
                 renderer.material = tornadoMat;
                 modelSize = tornadoModel.localScale;
                 model = Instantiate(tornadoModel, transform.position, transform.rotation, transform.parent);
@@ -99,6 +110,7 @@ public class Disaster : MonoBehaviour
                 break;
 
             case DisasterType.Winterstorm:
+                icon = winterstormIcon;
                 renderer.material = winterstormMat;
                 modelSize = winterstormModel.localScale;
                 model = Instantiate(winterstormModel, transform.position, transform.rotation, transform.parent);
@@ -195,5 +207,10 @@ public class Disaster : MonoBehaviour
     public float GetBurstSize()
     {
         return burstSize;
+    }
+
+    public Sprite GetDisasterIcon()
+    {
+        return icon;
     }
 }
