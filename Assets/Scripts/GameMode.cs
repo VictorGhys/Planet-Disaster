@@ -32,7 +32,10 @@ public class GameMode : MonoBehaviour
     [SerializeField] private TMP_Text selectedDisasterTypeHud;
     [SerializeField] private Image selectedDisasterIconHud;
     [SerializeField] private Transform selectedText;
-    [SerializeField] private Animator rocketShip;
+    [SerializeField] private Transform rocketShipPF;
+    [SerializeField] private Transform rocketShipSpawnPoint;
+    [SerializeField] private Transform UfoPF;
+    [SerializeField] private Transform UfoSpawnPoint;
 
     [SerializeField] private Wave[] waves;
     private Disaster selectedDisaster = null;
@@ -395,8 +398,21 @@ public class GameMode : MonoBehaviour
 
     public void ShowRocketShipTakeOff()
     {
+        // set camera right for good view of the launch
         camera.transform.parent.transform.position = new Vector3(0.819397151f, 15.6625614f, 42.1783409f);
         camera.transform.parent.transform.rotation = Quaternion.Euler(new Vector3(20.3685818f, 181.111816f, 347.351379f));
-        rocketShip.SetTrigger("FlyOff");
+        // spawn rocket
+        var rocket = Instantiate(rocketShipPF, rocketShipSpawnPoint.position, rocketShipSpawnPoint.rotation, rocketShipSpawnPoint);
+        rocket.GetComponent<Animator>().SetTrigger("FlyOff");
+    }
+
+    public void ShowUfo()
+    {
+        camera.transform.parent.transform.position = new Vector3(34.2117996f, 12.0519295f, 26.6327114f);
+        camera.transform.parent.transform.rotation = Quaternion.Euler(new Vector3(15.5350208f, 232.099854f, 19.1002483f));
+        // spawn rocket
+        var ufo = Instantiate(UfoPF, UfoSpawnPoint.position, UfoPF.rotation, UfoSpawnPoint);
+        ufo.GetComponent<Ufo>().SetEarth(earthParent);
+        //ufo.GetComponent<Animator>().SetTrigger("GoAway");
     }
 }
