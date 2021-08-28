@@ -36,6 +36,8 @@ public class GameMode : MonoBehaviour
     [SerializeField] private Transform rocketShipSpawnPoint;
     [SerializeField] private Transform UfoPF;
     [SerializeField] private Transform UfoSpawnPoint;
+    [SerializeField] private Transform poofEffect;
+    [SerializeField] private AudioSource alarmSFX;
 
     [SerializeField] private Wave[] waves;
     private Disaster selectedDisaster = null;
@@ -46,6 +48,7 @@ public class GameMode : MonoBehaviour
     private int disastersSpawned = 0;
     private List<Disaster> disasters;
     private bool isPuzzleSolvable;
+    private bool soundAlarmOnce = true;
 
     private Dictionary<Disaster.DisasterType, List<Disaster.DisasterType>> disasterMatches =
         new Dictionary<Disaster.DisasterType, List<Disaster.DisasterType>> {
@@ -145,6 +148,12 @@ public class GameMode : MonoBehaviour
                 //game over restart wave
                 gameOver = true;
             }
+
+            if (populationSlider.value < 0.15 && soundAlarmOnce)
+            {
+                soundAlarmOnce = false;
+                alarmSFX.Play();
+            }
             populationSlider.value += populationRegainRate * populationSlider.maxValue * Time.deltaTime;
         }
         //spawning
@@ -240,6 +249,7 @@ public class GameMode : MonoBehaviour
             disasterSpawnInterval = waves[currentWave].spawnInterval;
             spawnTime = 0;
             populationSlider.value = populationSlider.maxValue;
+            soundAlarmOnce = true;
             //dialogue
             waves[currentWave].startDialogue.TriggerDialogue();
             waveHud.text = (currentWave + 2021).ToString();
@@ -325,6 +335,8 @@ public class GameMode : MonoBehaviour
                 //succesfull match
                 //disaster1.Relocate(disaster2.transform);
                 //disaster1.ResetSize();
+                Instantiate(poofEffect, disaster1.transform.position, disaster1.transform.rotation);
+                Instantiate(poofEffect, disaster2.transform.position, disaster2.transform.rotation);
                 disasters.Remove(disaster1);
                 disasters.Remove(disaster2);
                 disaster2.Destroy();
