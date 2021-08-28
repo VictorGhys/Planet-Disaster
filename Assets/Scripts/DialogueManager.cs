@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Net.Mime;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
@@ -17,6 +16,10 @@ public class DialogueManager : Singleton<DialogueManager>
 
     private Queue<string> sentences;
     private int timesClickedOnSkip = 0;
+    private int amountOfSentencesAtStart;
+    private int functionAtSentence = 0;
+
+    private UnityEvent function;
 
     public void Awake()
     {
@@ -26,6 +29,9 @@ public class DialogueManager : Singleton<DialogueManager>
     // Start is called before the first frame update
     public void StartDialogue(Dialogue dialogue)
     {
+        functionAtSentence = dialogue.functionAtSentence;
+        function = dialogue.function;
+
         animator.SetBool("IsOpen", true);
         Time.timeScale = 0;
         if (dialogue.name != "")
@@ -41,6 +47,7 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             int r = Random.Range(0, dialogue.sentences.Length);
             sentences.Enqueue(dialogue.sentences[r]);
+            amountOfSentencesAtStart = 1;
         }
         else
         {
@@ -48,6 +55,8 @@ public class DialogueManager : Singleton<DialogueManager>
             {
                 sentences.Enqueue(sentence);
             }
+
+            amountOfSentencesAtStart = sentences.Count;
         }
 
         DisplayNextSentence();
@@ -61,6 +70,13 @@ public class DialogueManager : Singleton<DialogueManager>
             return;
         }
 
+        if (functionAtSentence == amountOfSentencesAtStart - sentences.Count)
+        {
+            if (function != null)
+            {
+                function.Invoke();
+            }
+        }
         string sentence = sentences.Dequeue();
         //Debug.Log(sentence);
         //dialogueText.text = sentence;

@@ -554,11 +554,12 @@ MonoBehaviour:
   matchWrongSFX: {fileID: 131460059}
   matchErrorSFX: {fileID: 131460058}
   errorShakePreset: {fileID: 11400000, guid: 560e1fe6a5de60f42a5a2c8d3e0f7a27, type: 2}
-  currentWave: 0
+  currentWave: 6
   waveHud: {fileID: 258090245}
   selectedDisasterTypeHud: {fileID: 212735508}
   selectedDisasterIconHud: {fileID: 1946995827}
   selectedText: {fileID: 1747018989}
+  rocketShip: {fileID: 1484375085}
   waves:
   - startDialogue: {fileID: 1292888812}
     amountOfDisastersToSpawn: 4
@@ -915,6 +916,10 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 0
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls: []
     sentences:
     - I knew I shouldn't have given these monkeys thumbs. They only use them for
       mischief.
@@ -1311,6 +1316,10 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 1
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls: []
     sentences:
     - NO NO NO, YOU CAN'T DO THAT!
     - WHAT ARE YOU DOING?!
@@ -1654,6 +1663,10 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 0
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls: []
     sentences:
     - Guess what? They actually did it! They went carbon neutral!
     - These earthlings sure are lucky to have you as their guardian. Without you
@@ -1710,6 +1723,10 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 0
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls: []
     sentences:
     - Wow, good job fixing these disasters!
     - Weird that there were so many disasters. Hmm... Must have been a one time thing.
@@ -2718,6 +2735,10 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 0
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls: []
     sentences:
     - Hello! Are you the new one?
     - Of course you are, I can see the green behind your ears from here.
@@ -2945,6 +2966,10 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 0
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls: []
     sentences:
     - Man you are like a disaster solving prodigy or something.
     - I haven't found what is causing these disasters.
@@ -3215,6 +3240,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466650500}
   m_CullTransparentMesh: 0
+--- !u!1 &1484375084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3711644692169899723, guid: f5005dca5809a82499e4927e89a67947, type: 3}
+  m_PrefabInstance: {fileID: 2336742620621388241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1484375085
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484375084}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f42954553057a9545b180fa09ec3917b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1523595344
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,6 +3385,10 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 1
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls: []
     sentences:
     - 
     - 
@@ -3386,6 +3439,22 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 0
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 131460055}
+          m_TargetAssemblyTypeName: GameMode, Assembly-CSharp
+          m_MethodName: ShowRocketShipTakeOff
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     sentences:
     - DID THEY JUST LAUNCHED A ROCKET TO OUTER SPACE?!
     - Well, I didn't see that coming.
@@ -3438,6 +3507,10 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 0
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls: []
     sentences:
     - So it turns out these monkeys that I created started to walk and became really
       smart.
@@ -4269,6 +4342,10 @@ MonoBehaviour:
   dialogue:
     name: Omnipresent Being
     pickRandom: 0
+    functionAtSentence: 0
+    function:
+      m_PersistentCalls:
+        m_Calls: []
     sentences:
     - 'Damn, these disasters seem to get worse. '
     - Make sure you fix them before they burst and wipe out a whole country or a
@@ -4415,31 +4492,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.24094205
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.222548
+      value: 9.623
       objectReference: {fileID: 0}
     - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00000009476207
+      value: 16.709
       objectReference: {fileID: 0}
     - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5
+      value: -0.19897473
       objectReference: {fileID: 0}
     - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: 0.6785345
       objectReference: {fileID: 0}
     - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5
+      value: -0.19897473
       objectReference: {fileID: 0}
     - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 0.6785345
       objectReference: {fileID: 0}
     - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
       propertyPath: m_RootOrder
@@ -4455,7 +4532,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
+      value: -32.687
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092005705176867953, guid: f5005dca5809a82499e4927e89a67947, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5005dca5809a82499e4927e89a67947, type: 3}

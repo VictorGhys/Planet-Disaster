@@ -5,6 +5,7 @@ using System.Linq;
 using MilkShake;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Disaster.DisasterType;
 using Random = UnityEngine.Random;
@@ -31,6 +32,7 @@ public class GameMode : MonoBehaviour
     [SerializeField] private TMP_Text selectedDisasterTypeHud;
     [SerializeField] private Image selectedDisasterIconHud;
     [SerializeField] private Transform selectedText;
+    [SerializeField] private Animator rocketShip;
 
     [SerializeField] private Wave[] waves;
     private Disaster selectedDisaster = null;
@@ -389,5 +391,12 @@ public class GameMode : MonoBehaviour
         {
             disaster.Destroy();
         }
+    }
+
+    public void ShowRocketShipTakeOff()
+    {
+        camera.transform.parent.transform.position = new Vector3(0.819397151f, 15.6625614f, 42.1783409f);
+        camera.transform.parent.transform.rotation = Quaternion.Euler(new Vector3(20.3685818f, 181.111816f, 347.351379f));
+        rocketShip.SetTrigger("FlyOff");
     }
 }
