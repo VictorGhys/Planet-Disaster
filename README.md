@@ -4,3 +4,13 @@ Planet Disaster is a 3D chaotic story driven puzzle game. In the game disasters 
 The game was made for brackeys game jam 2021.2 over the course of one week. The theme was "Let there be chaos". Made in Unity.
 
 You can play it for free [here](https://victorghys.itch.io/planet-disaster).
+
+Interesting parts:
+
+[camera movement](https://github.com/VictorGhys/Planet-Disaster)
+
+[dialogue manager](https://github.com/VictorGhys/Planet-Disaster/blob/main/Assets/Scripts/DialogueManager.cs)
+
+[disaster](https://github.com/VictorGhys/Planet-Disaster/blob/main/Assets/Scripts/Disaster.cs)
+
+[game mode](https://github.com/VictorGhys/Planet-Disaster/blob/main/Assets/Scripts/GameMode.cs)
