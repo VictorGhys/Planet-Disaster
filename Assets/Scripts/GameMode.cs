@@ -13,7 +13,7 @@ using Random = UnityEngine.Random;
 public class GameMode : MonoBehaviour
 {
     [SerializeField] private float earthRadius = 20;
-    [SerializeField] private Transform disasterPF;
+    [SerializeField] private List<Transform> disasterPFs;
     [SerializeField] private Transform earthParent;
     [SerializeField] private Texture2D landWaterTex;
     [SerializeField] private Camera camera;
@@ -72,29 +72,15 @@ public class GameMode : MonoBehaviour
     {
         Vector3 pos = GetRandomDisasterSpawnPos();
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, (pos / earthRadius));
-        //Quaternion quarterTurn = Quaternion.Euler(90, 0, 0);
-        Transform disasterGo = Instantiate(disasterPF, pos, rot, earthParent);
+        int randIdx = Random.Range(0, disasterPFs.Count);
+        Transform disasterGo = Instantiate(disasterPFs[randIdx], pos, rot, earthParent);
         Disaster disaster = disasterGo.GetComponent<Disaster>();
-        if (disasterType == None)
-        {
-            disaster.SetDisasterType(GetRandomDisasterType());
-        }
-        else
-        {
-            disaster.SetDisasterType(disasterType);
-        }
+        
         disaster.GetComponent<Disaster>().slider = populationSlider;
         disasters.Add(disaster.GetComponent<Disaster>());
         isPuzzleSolvable = false;
     }
-
-    private Disaster.DisasterType GetRandomDisasterType()
-    {
-        Array values = Enum.GetValues(typeof(Disaster.DisasterType));
-        Disaster.DisasterType randomType = (Disaster.DisasterType)values.GetValue(Random.Range(1, values.Length));
-        return randomType;
-    }
-
+    
     private Vector3 GetRandomDisasterSpawnPos()
     {
         Vector3 rand;
@@ -113,8 +99,8 @@ public class GameMode : MonoBehaviour
                 if (sample < 0.5f)
                 {
                     //make sure there isn't an other disaster nearby
-                    float radius = disasterPF.GetComponent<CapsuleCollider>().radius *
-                                   disasterPF.GetComponent<Disaster>().GetBurstSize();
+                    float radius = disasterPFs[0].GetComponent<CapsuleCollider>().radius *
+                                   disasterPFs[0].GetComponent<Disaster>().GetBurstSize();
                     var colliders = Physics.OverlapSphere(randPos, radius);
                     if (colliders.Length <= 1)
                     {

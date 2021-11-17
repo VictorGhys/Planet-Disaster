@@ -541,7 +541,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   earthRadius: 20
-  disasterPF: {fileID: 795836936347834663, guid: a36c2f78e58073a46b7477c43b302910, type: 3}
+  disasterPFs:
+  - {fileID: 6866220903288100968, guid: 31141ca6aad0d7748bd949000ca78209, type: 3}
+  - {fileID: 8558213661673204402, guid: 28df6cae45368e8489a0630c930333a4, type: 3}
+  - {fileID: 2316063383643124902, guid: c554797889a815845aa31ad8701d46c5, type: 3}
+  - {fileID: 8115547595185584066, guid: 144566e41ea131a48997ba69a11bda46, type: 3}
+  - {fileID: 7509643037284616941, guid: b45fafeda6262584898768eeb37525da, type: 3}
   earthParent: {fileID: 2117829142}
   landWaterTex: {fileID: 2800000, guid: 5ca5bf05f3cb3b046be353275c0ef45c, type: 3}
   camera: {fileID: 963194227}

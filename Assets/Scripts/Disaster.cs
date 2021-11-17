@@ -17,45 +17,26 @@ public class Disaster : MonoBehaviour
     [SerializeField] private float sizeGrowthSpeed = 10;
     [SerializeField] private float earthquakeShakeSpeed = 1;
     [SerializeField] private float earthquakeShakeStrength = 1;
-    [SerializeField] private Material floodMat;
-    [SerializeField] private Material fireMat;
-    [SerializeField] private Material earthquakeMat;
-    [SerializeField] private Material tornadoMat;
-    [SerializeField] private Material winterstormMat;
-
-    [SerializeField] private Transform floodModel;
-    [SerializeField] private Transform fireModel;
-    [SerializeField] private Transform earthquakeModel;
-    [SerializeField] private Transform tornadoModel;
-    [SerializeField] private Transform winterstormModel;
+    
+    [SerializeField] private Transform disasterModel;
     [SerializeField] private float populationDrainRate;
     [SerializeField] private Outline outline;
 
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip floodSFX;
-    [SerializeField] private AudioClip fireSFX;
-    [SerializeField] private AudioClip earthquakeSFX;
-    [SerializeField] private AudioClip tornadoSFX;
-    [SerializeField] private AudioClip winterstormSFX;
     [SerializeField] private float volumeLow = 0.4f;
     [SerializeField] private float volumeHigh = 0.7f;
     [SerializeField] private Transform burstModel;
 
-    [SerializeField] private Sprite floodIcon;
-    [SerializeField] private Sprite fireIcon;
-    [SerializeField] private Sprite earthquakeIcon;
-    [SerializeField] private Sprite tornadoIcon;
-    [SerializeField] private Sprite winterstormIcon;
+    [SerializeField] private Sprite disasterIcon;
 
-    private DisasterType disasterType;
+    [SerializeField] private DisasterType disasterType;
     private Transform model;
     private Vector3 modelSize;
     private float iconYScale;
-    private Sprite icon;
 
     public enum DisasterType
     {
-        None, Flood, Fire, Earthquake, Tornado, Winterstorm
+        None = 0, Flood = 1, Fire = 2, Earthquake = 3, Tornado = 4, Winterstorm = 5
     }
 
     public DisasterType GetDisasterType()
@@ -74,53 +55,8 @@ public class Disaster : MonoBehaviour
         DisableOutline();
         size = startSize;
         iconYScale = transform.localScale.y;
-        MeshRenderer renderer = GetComponent<MeshRenderer>();
-        switch (disasterType)
-        {
-            case DisasterType.Flood:
-                icon = floodIcon;
-                renderer.material = floodMat;
-                modelSize = floodModel.localScale;
-                model = Instantiate(floodModel, transform.position, transform.rotation, transform.parent);
-                audioSource.clip = floodSFX;
-                break;
-
-            case DisasterType.Fire:
-                icon = fireIcon;
-                renderer.material = fireMat;
-                modelSize = fireModel.localScale;
-                model = Instantiate(fireModel, transform.position, transform.rotation, transform.parent);
-                audioSource.clip = fireSFX;
-                break;
-
-            case DisasterType.Earthquake:
-                icon = earthquakeIcon;
-                renderer.material = earthquakeMat;
-                modelSize = earthquakeModel.localScale;
-                model = Instantiate(earthquakeModel, transform.position, transform.rotation, transform.parent);
-                audioSource.clip = earthquakeSFX;
-                break;
-
-            case DisasterType.Tornado:
-                icon = tornadoIcon;
-                renderer.material = tornadoMat;
-                modelSize = tornadoModel.localScale;
-                model = Instantiate(tornadoModel, transform.position, transform.rotation, transform.parent);
-                audioSource.clip = tornadoSFX;
-                break;
-
-            case DisasterType.Winterstorm:
-                icon = winterstormIcon;
-                renderer.material = winterstormMat;
-                modelSize = winterstormModel.localScale;
-                model = Instantiate(winterstormModel, transform.position, transform.rotation, transform.parent);
-                audioSource.clip = winterstormSFX;
-                break;
-
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-        audioSource.Play();
+        modelSize = disasterModel.localScale;
+        model = Instantiate(disasterModel, transform.position, transform.rotation, transform.parent);
     }
 
     // Update is called once per frame
@@ -156,11 +92,8 @@ public class Disaster : MonoBehaviour
         if (disasterType == DisasterType.Earthquake)
         {
             float sin = Mathf.Sin(Time.time * earthquakeShakeSpeed) * earthquakeShakeStrength;
-            //model.transform.position += model.transform.right * sin;
-            //transform.position += transform.right * sin;
             model.GetChild(0).transform.rotation = transform.rotation;
             model.GetChild(0).transform.Rotate(transform.up, sin);
-            //transform.Rotate(transform.up, sin);
         }
         //volume adjustment (the bigger the louder)
         float t = (size - startSize) / (burstSize - startSize);
@@ -211,6 +144,6 @@ public class Disaster : MonoBehaviour
 
     public Sprite GetDisasterIcon()
     {
-        return icon;
+        return disasterIcon;
     }
 }
